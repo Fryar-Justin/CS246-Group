@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    // note added by Chris. practicing git push from android studio
+    // note added by Chris. Justin made these edits
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 }
-// note added by Justin
+// Justin made changes
