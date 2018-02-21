@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CS246FinalProject.iml" filepath="$PROJECT_DIR$/CS246FinalProject.iml" />
+      <module fileurl="file://C:\Users\Brad\AndroidStudioProjects\CS246-Group\CS246FinalProject\CS246FinalProject.iml" filepath="C:\Users\Brad\AndroidStudioProjects\CS246-Group\CS246FinalProject\CS246FinalProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Brad\AndroidStudioProjects\CS246-Group\CS246FinalProject\app\app.iml" filepath="C:\Users\Brad\AndroidStudioProjects\CS246-Group\CS246FinalProject\app\app.iml" />
     </modules>
   </component>
 </project>
