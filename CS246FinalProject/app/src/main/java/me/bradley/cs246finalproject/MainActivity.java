@@ -12,4 +12,4 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 }
-// change is made here and I'm adding another change here
+// Removing comments
