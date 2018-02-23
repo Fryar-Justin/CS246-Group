@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CS246FinalProject</string>
+    <string name="Electron">Electron</string>
+    <string name="Nuetron">Nuetron</string>
+    <string name="Proton">Proton</string>
+    <string name="Submit">Submit</string>
+    <string name="Play">Play</string>
+    <string name="Help">Help</string>
 </resources>
