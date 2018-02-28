@@ -7,7 +7,8 @@ import android.widget.NumberPicker;
 
 public class MainActivity extends AppCompatActivity {
 
-    // note added by Chris. practicing git push from android studio
+    public static int protons = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         numberPickerE.setMaxValue(150);
         numberPickerE.setValue(0);
     }
-}
-// this is merged
 
-// This is a comment by brad
+    public static int getProtons(){
+        return protons;
+    }
+}
