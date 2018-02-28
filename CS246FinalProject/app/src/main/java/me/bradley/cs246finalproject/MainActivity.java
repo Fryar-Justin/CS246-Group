@@ -7,7 +7,7 @@ import android.widget.NumberPicker;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int protons = 0;
+    public int protons = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         numberPickerE.setValue(0);
     }
 
-    public static int getProtons(){
+    public int getProtons(){
         return protons;
     }
 }
