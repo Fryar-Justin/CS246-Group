@@ -5,7 +5,7 @@ package me.bradley.cs246finalproject;
  */
 
 public class Element {
-    private int protons;
+    private int protons = 0;
     private int neutrons;
     private int electrons;
     private String name;
