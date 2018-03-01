@@ -7,16 +7,19 @@ import android.widget.NumberPicker;
 
 public class MainActivity extends AppCompatActivity {
 
-    public int protons = 0;
+    // These are the containers for the selected values of the elements of the elements
+    protected NumberPicker numberPickerP;
+    protected NumberPicker numberPickerN;
+    protected NumberPicker numberPickerE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        NumberPicker numberPickerP = (NumberPicker) findViewById(R.id.numberPickerProton);
-        NumberPicker numberPickerN = (NumberPicker) findViewById(R.id.numberPickerNuetron);
-        NumberPicker numberPickerE = (NumberPicker) findViewById(R.id.numberPickerElectron);
+        numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
+        numberPickerN = (NumberPicker) findViewById(R.id.nuetronNumberPicker);
+        numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
 
         numberPickerP.setMinValue(0);
         numberPickerP.setMaxValue(150);
@@ -32,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onSubmit(View view) {
-        NumberPicker numberPickerP = (NumberPicker) findViewById(R.id.numberPickerProton);
-        NumberPicker numberPickerN = (NumberPicker) findViewById(R.id.numberPickerNuetron);
-        NumberPicker numberPickerE = (NumberPicker) findViewById(R.id.numberPickerElectron);
+
+        numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
+        numberPickerN = (NumberPicker) findViewById(R.id.nuetronNumberPicker);
+        numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
 
         numberPickerP.setMinValue(0);
         numberPickerP.setMaxValue(150);
@@ -47,9 +51,8 @@ public class MainActivity extends AppCompatActivity {
         numberPickerE.setMinValue(0);
         numberPickerE.setMaxValue(150);
         numberPickerE.setValue(0);
-    }
 
-    public int getProtons(){
-        return protons;
+
+
     }
 }

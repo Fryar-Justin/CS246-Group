@@ -6,4 +6,6 @@
     <string name="Submit">Submit</string>
     <string name="Play">Play</string>
     <string name="Help">Help</string>
+    <string name="AtomicNumber">###</string>
+    <string name="Symbol">O</string>
 </resources>
