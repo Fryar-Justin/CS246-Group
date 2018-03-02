@@ -1,10 +1,10 @@
 package me.bradley.cs246finalproject;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,12 +55,20 @@ public class MainActivity extends AppCompatActivity {
         neutron = (numberPickerN.getValue());
         proton = (numberPickerP.getValue());
 
+        Toast.makeText(this.getApplicationContext(),
+                "Electron: " + electron, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.getApplicationContext(),
+                "Neutron: " + neutron, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.getApplicationContext(),
+                "Proton: " + proton, Toast.LENGTH_SHORT).show();
+
+        /*
         Intent intent = new Intent(this, ElementActivity.class);
 
         intent.putExtra(ELECTRON, electron);
         intent.putExtra(NEUTRON, neutron);
         intent.putExtra(PROTON, proton);
 
-        startActivity(intent);
+        startActivity(intent); */
     }
 }
