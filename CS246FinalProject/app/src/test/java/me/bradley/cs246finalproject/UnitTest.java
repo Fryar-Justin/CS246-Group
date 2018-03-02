@@ -37,4 +37,13 @@ public class UnitTest {
         assertEquals(testElement.getProtons(), 0);
     }
 
+    @Test
+    public void electronsEqualDesiredAtomTest() {
+        assertEquals(testElement.getElectrons(), 0);
+    }
+
+    @Test
+    public void neutronsEqualDesiredAtomTest() {
+        assertEquals(testElement.getNeutrons(), 0);
+    }
 }
