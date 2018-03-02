@@ -44,25 +44,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onSubmit(View view) {
-        int proton = 0;
-        int electron = 0;
-        int neutron = 0;
+        String proton = "0";
+        String electron = "0";
+        String neutron = "0";
 
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
         numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
         numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
 
-        electron = (numberPickerE.getValue());
-        neutron = (numberPickerN.getValue());
-        proton = (numberPickerP.getValue());
+        electron = Integer.toString(numberPickerE.getValue());
+        neutron = Integer.toString(numberPickerN.getValue());
+        proton = Integer.toString(numberPickerP.getValue());
 
+        /*
         Toast.makeText(this.getApplicationContext(),
                 "Electron: " + electron, Toast.LENGTH_SHORT).show();
         Toast.makeText(this.getApplicationContext(),
                 "Neutron: " + neutron, Toast.LENGTH_SHORT).show();
         Toast.makeText(this.getApplicationContext(),
                 "Proton: " + proton, Toast.LENGTH_SHORT).show();
-
+        */
 
         Intent intent = new Intent(this, ElementActivity.class);
 
