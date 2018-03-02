@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
-        numberPickerN = (NumberPicker) findViewById(R.id.nuetronNumberPicker);
+        numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
         numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
 
         numberPickerP.setMinValue(0);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         int neutron = 0;
 
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
-        numberPickerN = (NumberPicker) findViewById(R.id.nuetronNumberPicker);
+        numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
         numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
 
         electron = (numberPickerE.getValue());
