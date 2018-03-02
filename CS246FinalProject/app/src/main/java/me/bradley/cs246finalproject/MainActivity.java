@@ -51,8 +51,5 @@ public class MainActivity extends AppCompatActivity {
         numberPickerE.setMinValue(0);
         numberPickerE.setMaxValue(150);
         numberPickerE.setValue(0);
-
-
-
     }
 }
