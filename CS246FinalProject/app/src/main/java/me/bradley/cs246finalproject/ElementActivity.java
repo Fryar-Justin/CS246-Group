@@ -14,9 +14,9 @@ public class ElementActivity extends AppCompatActivity {
     public Element elementActual;
 
     // added these for viewing. could also create element in MainActivity.
-    protected int _protons = 0;
-    protected int _electrons = 0;
-    protected int _neutrons = 0;
+    String _protons = "0";
+    String _electrons = "0";
+    String _neutrons = "0";
 
     String prot;
     String elec;

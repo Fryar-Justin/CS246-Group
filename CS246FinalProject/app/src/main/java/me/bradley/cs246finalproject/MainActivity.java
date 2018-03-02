@@ -1,5 +1,6 @@
 package me.bradley.cs246finalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -62,13 +63,13 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this.getApplicationContext(),
                 "Proton: " + proton, Toast.LENGTH_SHORT).show();
 
-        /*
+
         Intent intent = new Intent(this, ElementActivity.class);
 
         intent.putExtra(ELECTRON, electron);
         intent.putExtra(NEUTRON, neutron);
         intent.putExtra(PROTON, proton);
 
-        startActivity(intent); */
+        startActivity(intent);
     }
 }
