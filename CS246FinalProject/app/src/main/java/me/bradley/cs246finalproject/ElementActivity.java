@@ -1,12 +1,10 @@
 package me.bradley.cs246finalproject;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class ElementActivity extends AppCompatActivity {
 
@@ -24,6 +22,8 @@ public class ElementActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(getClass().getName(), String.format("Created intent"));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element);
 
