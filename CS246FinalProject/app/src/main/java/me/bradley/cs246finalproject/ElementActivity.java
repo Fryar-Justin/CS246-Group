@@ -14,9 +14,13 @@ public class ElementActivity extends AppCompatActivity {
     public Element elementActual;
 
     // added these for viewing. could also create element in MainActivity.
-    protected int _protons;
-    protected int _electrons;
-    protected int _neutrons;
+    protected int _protons = 0;
+    protected int _electrons = 0;
+    protected int _neutrons = 0;
+
+    String prot;
+    String elec;
+    String neut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,10 @@ public class ElementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_element);
 
         Intent intent = getIntent();
+
+        prot = intent.getStringExtra(MainActivity.PROTON);
+        elec = intent.getStringExtra(MainActivity.ELECTRON);
+        neut = intent.getStringExtra(MainActivity.NEUTRON);
 
         // display the information in the TextViews
         TextView actualProtons = (TextView) findViewById(R.id.textView5);
@@ -36,13 +44,13 @@ public class ElementActivity extends AppCompatActivity {
         actualNeutrons.setText(_neutrons);
 
         TextView desiredProtons = (TextView) findViewById(R.id.textView14);
-        desiredProtons.setText(_protons);
+        desiredProtons.setText(prot);
 
         TextView desiredElectrons = (TextView) findViewById(R.id.textView15);
-        desiredElectrons.setText(_electrons);
+        desiredElectrons.setText(elec);
 
         TextView desiredNeutrons = (TextView) findViewById(R.id.textView16);
-        desiredNeutrons.setText(_neutrons);
+        desiredNeutrons.setText(neut);
 
         // create element here from values passed with intent
 
