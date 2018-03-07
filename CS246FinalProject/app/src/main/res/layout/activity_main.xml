@@ -16,7 +16,7 @@
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/highScoreTextView" />
 
     <NumberPicker
         android:id="@+id/electronNumberPicker"
@@ -96,11 +96,10 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/highScoreTextView"
         android:layout_width="58dp"
         android:layout_height="46dp"
         android:layout_marginTop="64dp"
-        android:text="8"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"

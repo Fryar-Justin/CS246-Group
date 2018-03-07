@@ -1,11 +1,12 @@
 package me.bradley.cs246finalproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.NumberPicker;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     protected NumberPicker numberPickerN;
     protected NumberPicker numberPickerE;
 
+    protected TextView highScoreTextView;
+
     protected Element actualElement;
     protected Element expectedElement;
 
@@ -21,10 +24,22 @@ public class MainActivity extends AppCompatActivity {
     public static final String NEUTRON = "NEUTRON_EXTRA";
     public static final String PROTON = "PROTON_EXTRA";
 
+    protected static final String highScore = "HIGH_SCORE";
+
+    protected SharedPreferences sharedPreferences;
+    protected SharedPreferences.Editor editor;
+
+    private int highScoreInt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
+
+        highScoreTextView = (TextView) findViewById(R.id.highScoreTextView);
+        highScoreTextView.setText(sharedPreferences.getInt(highScore, 0));
 
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
         numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
@@ -72,5 +87,17 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(PROTON, proton);
 
         startActivity(intent);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop(); // Call super class method first
+
+        sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        highScoreInt = 150;
+
+        editor.putInt(highScore, highScoreInt);
+        editor.apply();
     }
 }
