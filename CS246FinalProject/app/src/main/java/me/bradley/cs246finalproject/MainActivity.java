@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -18,11 +17,14 @@ public class MainActivity extends AppCompatActivity {
     protected NumberPicker numberPickerN;
     protected NumberPicker numberPickerE;
 
+    // This is an array containing the hard coded elements from the Periodic Table of Elements
     protected ArrayList<Element> tableOfElements;
     protected Element holdElement;
 
+    // TextView declaration
     protected TextView highScoreTextView;
 
+    // Stored expected and given from user elements
     protected Element actualElement;
     protected Element expectedElement;
 
@@ -39,18 +41,26 @@ public class MainActivity extends AppCompatActivity {
 
     private String highScoreInt;
 
+    /**********************************************************************************************
+     * onCreate
+     * @param savedInstanceState
+     *
+     * This is the method run as the intent is created. It will load everything that we need to have
+     * loaded so that the user can interact with the application. This specific onCreate function
+     * will load a target element to have the user attempt to guess the atomic parts.
+     *********************************************************************************************/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Shared preferences loads the high score
         sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
 
         highScoreTextView = (TextView) findViewById(R.id.highScoreTextView);
-        Log.i(TAG, "onCreate: PROBLEM HERE");
         highScoreTextView.setText(sharedPreferences.getString(highScore, "0"));
-        Log.i(TAG, "onCreate: AFTER THE PROBLEM?");
 
+        //Set the values that the number pickers will have for their max/min
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
         numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
         numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
@@ -68,11 +78,20 @@ public class MainActivity extends AppCompatActivity {
         numberPickerE.setValue(0);
     }
 
+    /**********************************************************************************************
+     * onSubmit
+     * @param view
+     *
+     * This will pass the user given atomic parts, and test them against our target element. It will
+     * then call ElementActivity which will display the user given input, and the expected results
+     *********************************************************************************************/
     public void onSubmit(View view) {
+        //Initialize values
         String proton = "0";
         String electron = "0";
         String neutron = "0";
 
+        //Find our number picker values.
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
         numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
         numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
@@ -81,15 +100,7 @@ public class MainActivity extends AppCompatActivity {
         neutron = Integer.toString(numberPickerN.getValue());
         proton = Integer.toString(numberPickerP.getValue());
 
-        /*
-        Toast.makeText(this.getApplicationContext(),
-                "Electron: " + electron, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this.getApplicationContext(),
-                "Neutron: " + neutron, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this.getApplicationContext(),
-                "Proton: " + proton, Toast.LENGTH_SHORT).show();
-        */
-
+        //Create a new intent to display the expected and given atomic parts
         Intent intent = new Intent(this, ElementActivity.class);
 
         intent.putExtra(ELECTRON, electron);
@@ -99,6 +110,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**********************************************************************************************
+     * onStop
+     *
+     * When the application stops we want to test to see if the current score is greater than the
+     * high score, and if it is then we want to set the current score to the high score
+     *******************************************************************************************/
     @Override
     protected void onStop() {
         super.onStop(); // Call super class method first
@@ -111,6 +128,13 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    /**********************************************************************************************
+     * createArray
+     * @returns an array containing the possible elements we will test the users knowledge on
+     *
+     * This creates a hard coded array that will be randomly used to test the user's knowledge on
+     * elements. Currently it contains the first 20 elements on the Periodic Table Of Elements.
+     *********************************************************************************************/
     private ArrayList<Element> createArray() {
         tableOfElements.clear();
 
@@ -274,8 +298,6 @@ public class MainActivity extends AppCompatActivity {
         holdElement.setName("Calcium");
 
         tableOfElements.add(holdElement);
-
-
 
         return tableOfElements;
     }
