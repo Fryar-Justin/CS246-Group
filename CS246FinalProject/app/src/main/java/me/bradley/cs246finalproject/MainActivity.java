@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     protected SharedPreferences sharedPreferences;
     protected SharedPreferences.Editor editor;
 
-    private int highScoreInt;
+    private static final String TAG = "MAIN ACTIVITY: ";
+
+    private String highScoreInt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
 
         highScoreTextView = (TextView) findViewById(R.id.highScoreTextView);
-        highScoreTextView.setText(sharedPreferences.getInt(highScore, 0));
+        Log.i(TAG, "onCreate: PROBLEM HERE");
+        highScoreTextView.setText(sharedPreferences.getString(highScore, "0"));
+        Log.i(TAG, "onCreate: AFTER THE PROBLEM?");
 
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
         numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
@@ -95,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        highScoreInt = 150;
+        highScoreInt = "150";
 
-        editor.putInt(highScore, highScoreInt);
+        editor.putString(highScore, highScoreInt);
         editor.apply();
     }
 }
