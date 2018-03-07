@@ -13,9 +13,9 @@ public class ElementActivity extends AppCompatActivity {
     public Element elementActual;
 
     // added these for viewing. could also create element in MainActivity.
-    String _protons = "0";
-    String _electrons = "0";
-    String _neutrons = "0";
+    String _protons;
+    String _electrons;
+    String _neutrons;
 
     String prot;
     String elec;
@@ -30,9 +30,9 @@ public class ElementActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        prot = intent.getStringExtra(MainActivity.PROTON);
-        elec = intent.getStringExtra(MainActivity.ELECTRON);
-        neut = intent.getStringExtra(MainActivity.NEUTRON);
+        _protons = intent.getStringExtra(MainActivity.PROTON);
+        _electrons = intent.getStringExtra(MainActivity.ELECTRON);
+        _neutrons = intent.getStringExtra(MainActivity.NEUTRON);
 
         // display the information in the TextViews
         TextView actualProtons = (TextView) findViewById(R.id.textView5);

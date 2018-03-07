@@ -1,12 +1,11 @@
 <resources>
-    <string name="app_name">CS246FinalProject</string>
+    <string name="app_name">Chemistry Memory</string>
     <string name="Electron">Electron</string>
     <string name="Neutron">Neutron</string>
     <string name="Proton">Proton</string>
     <string name="Submit">Submit</string>
     <string name="Play">Play</string>
     <string name="Help">Help</string>
-    <string name="AtomicNumber">###</string>
     <string name="Symbol">O</string>
     <string name="GameName">Atomic Builder</string>
     <string name="HowToPlay">How To Play</string>
