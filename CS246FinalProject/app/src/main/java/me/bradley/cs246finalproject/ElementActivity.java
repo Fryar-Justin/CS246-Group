@@ -7,6 +7,9 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class ElementActivity extends AppCompatActivity {
 
     public Element elementTarget;
@@ -74,7 +77,20 @@ public class ElementActivity extends AppCompatActivity {
 
     }
 
-    public void randomizeElements(){
+    /**********************************************************************************************
+     * randomizeElements
+     * @returns an Element object containing the details of the selected element for the student
+     * to interact with
+     *
+     * Picks a random item from the list of elements and returns that selected Element object
+     *********************************************************************************************/
+    public void randomizeElements(ArrayList<Element> tableOfElements) {
+        Toast.makeText(this.getApplicationContext(),
+                "Name: " + tableOfElements.get(0).getName(), Toast.LENGTH_SHORT).show();
 
+        Collections.shuffle(tableOfElements);
+
+        Toast.makeText(this.getApplicationContext(),
+                "Name: " + tableOfElements.get(0).getName(), Toast.LENGTH_SHORT).show();
     }
 }
