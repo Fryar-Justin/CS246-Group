@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -59,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // populate the array of elements
-        //createArray();
+        createArray();
+
+        for (int i = 0; i < tableOfElements.size(); i++) {
+            Log.i(TAG, "onCreate: TOE: " + tableOfElements.get(i).getName());
+        }
 
         //Shared preferences loads the high score
         sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
@@ -163,8 +168,9 @@ public class MainActivity extends AppCompatActivity {
      * This creates a hard coded array that will be randomly used to test the user's knowledge on
      * elements. Currently it contains the first 20 elements on the Periodic Table Of Elements.
      *********************************************************************************************/
-    private ArrayList<Element> createArray() {
-        tableOfElements.clear();
+    private void createArray() {
+        tableOfElements = new ArrayList<Element>();
+        holdElement = new Element(0, 0, 0);
 
         //Hydrogen
         holdElement.setProtons(1);
@@ -172,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         holdElement.setElectrons(1);
         holdElement.setName("Hydrogen");
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(1, 0, 1, "Hydrogen"));
 
         //Helium
         holdElement.setProtons(2);
@@ -180,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
         holdElement.setElectrons(2);
         holdElement.setName("Helium");
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(2, 2, 2, "Helium"));
 
         //Lithium
         holdElement.setProtons(3);
@@ -188,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         holdElement.setElectrons(3);
         holdElement.setName("Lithium");
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(3, 4, 3, "Lithim"));
 
         //Beryllium
         holdElement.setProtons(4);
@@ -196,15 +202,15 @@ public class MainActivity extends AppCompatActivity {
         holdElement.setElectrons(4);
         holdElement.setName("Beryllium");
 
-        tableOfElements.add(holdElement);
-
+        tableOfElements.add(new Element(4, 5, 4, "Beryllium"));
+/*
         //Boron
         holdElement.setProtons(5);
         holdElement.setNeutrons(6);
         holdElement.setElectrons(5);
         holdElement.setName("Boron");
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(1, 0, 1, ""));
 
 
         //Carbon
@@ -326,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
         holdElement.setName("Calcium");
 
         tableOfElements.add(holdElement);
-
-        return tableOfElements;
+*/
+        return;
     }
 }
