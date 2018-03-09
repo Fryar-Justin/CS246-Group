@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
         tableOfElements.add(new Element(2, 2, 2, "Helium"));
 
-        tableOfElements.add(new Element(3, 4, 3, "Lithim"));
+        tableOfElements.add(new Element(3, 4, 3, "Lithium"));
 
         tableOfElements.add(new Element(4, 5, 4, "Beryllium"));
 
