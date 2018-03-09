@@ -172,167 +172,46 @@ public class MainActivity extends AppCompatActivity {
         tableOfElements = new ArrayList<Element>();
         holdElement = new Element(0, 0, 0);
 
-        //Hydrogen
-        holdElement.setProtons(1);
-        holdElement.setNeutrons(0);
-        holdElement.setElectrons(1);
-        holdElement.setName("Hydrogen");
-
         tableOfElements.add(new Element(1, 0, 1, "Hydrogen"));
-
-        //Helium
-        holdElement.setProtons(2);
-        holdElement.setNeutrons(2);
-        holdElement.setElectrons(2);
-        holdElement.setName("Helium");
 
         tableOfElements.add(new Element(2, 2, 2, "Helium"));
 
-        //Lithium
-        holdElement.setProtons(3);
-        holdElement.setNeutrons(4);
-        holdElement.setElectrons(3);
-        holdElement.setName("Lithium");
-
         tableOfElements.add(new Element(3, 4, 3, "Lithim"));
 
-        //Beryllium
-        holdElement.setProtons(4);
-        holdElement.setNeutrons(5);
-        holdElement.setElectrons(4);
-        holdElement.setName("Beryllium");
-
         tableOfElements.add(new Element(4, 5, 4, "Beryllium"));
-/*
-        //Boron
-        holdElement.setProtons(5);
-        holdElement.setNeutrons(6);
-        holdElement.setElectrons(5);
-        holdElement.setName("Boron");
 
-        tableOfElements.add(new Element(1, 0, 1, ""));
+        tableOfElements.add(new Element(5, 6, 5, "Boron"));
 
+        tableOfElements.add(new Element(6, 6, 6, "Carbon"));
 
-        //Carbon
-        holdElement.setProtons(6);
-        holdElement.setNeutrons(6);
-        holdElement.setElectrons(6);
-        holdElement.setName("Carbon");
+        tableOfElements.add(new Element(7, 7, 7, "Nitrogen"));
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(8, 8, 8, "Oxygen"));
 
-        //Nitrogen
-        holdElement.setProtons(7);
-        holdElement.setNeutrons(7);
-        holdElement.setElectrons(7);
-        holdElement.setName("Nitrogen");
+        tableOfElements.add(new Element(9, 10, 9, "Fluorine"));
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(10, 10, 10, "Neon"));
 
-        //Oxygen
-        holdElement.setProtons(8);
-        holdElement.setNeutrons(8);
-        holdElement.setElectrons(8);
-        holdElement.setName("Oxygen");
+        tableOfElements.add(new Element(11, 12, 11, "Sodium"));
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(12, 12, 12, "Magnesium"));
 
-        //Fluorine
-        holdElement.setProtons(9);
-        holdElement.setNeutrons(10);
-        holdElement.setElectrons(9);
-        holdElement.setName("Fluorine");
+        tableOfElements.add(new Element(13, 14, 13, "Aluminum"));
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(14, 14, 14, "Silicon"));
 
-        //Neon
-        holdElement.setProtons(10);
-        holdElement.setNeutrons(10);
-        holdElement.setElectrons(10);
-        holdElement.setName("Neon");
+        tableOfElements.add(new Element(15, 16, 15, "Phosphorus"));
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(16, 16, 16, "Sulfur"));
 
-        //Sodium
-        holdElement.setProtons(11);
-        holdElement.setNeutrons(12);
-        holdElement.setElectrons(11);
-        holdElement.setName("Sodium");
+        tableOfElements.add(new Element(17, 18, 17, "Chlorine"));
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(18, 22, 18, "Argon"));
 
-        //Magnesium
-        holdElement.setProtons(12);
-        holdElement.setNeutrons(12);
-        holdElement.setElectrons(12);
-        holdElement.setName("Magnesium");
+        tableOfElements.add(new Element(19, 21, 19, "Potassium"));
 
-        tableOfElements.add(holdElement);
+        tableOfElements.add(new Element(20, 20, 20, "Calcium"));
 
-        //Aluminum
-        holdElement.setProtons(13);
-        holdElement.setNeutrons(14);
-        holdElement.setElectrons(13);
-        holdElement.setName("Aluminum");
-
-        tableOfElements.add(holdElement);
-
-        //Silicon
-        holdElement.setProtons(14);
-        holdElement.setNeutrons(14);
-        holdElement.setElectrons(14);
-        holdElement.setName("Silicon");
-
-        tableOfElements.add(holdElement);
-
-        //Phosphorus
-        holdElement.setProtons(15);
-        holdElement.setNeutrons(16);
-        holdElement.setElectrons(15);
-        holdElement.setName("Phosphorus");
-
-        tableOfElements.add(holdElement);
-
-        //Sulfur
-        holdElement.setProtons(16);
-        holdElement.setNeutrons(16);
-        holdElement.setElectrons(16);
-        holdElement.setName("Sulfur");
-
-        tableOfElements.add(holdElement);
-
-        //Chlorine
-        holdElement.setProtons(17);
-        holdElement.setNeutrons(18);
-        holdElement.setElectrons(17);
-        holdElement.setName("Chlorine");
-
-        tableOfElements.add(holdElement);
-
-        //Argon
-        holdElement.setProtons(18);
-        holdElement.setNeutrons(22);
-        holdElement.setElectrons(18);
-        holdElement.setName("Argon");
-
-        tableOfElements.add(holdElement);
-
-        //Potassium
-        holdElement.setProtons(19);
-        holdElement.setNeutrons(21);
-        holdElement.setElectrons(19);
-        holdElement.setName("Potassium");
-
-        tableOfElements.add(holdElement);
-
-        //Calcium
-        holdElement.setProtons(20);
-        holdElement.setNeutrons(20);
-        holdElement.setElectrons(20);
-        holdElement.setName("Calcium");
-
-        tableOfElements.add(holdElement);
-*/
         return;
     }
 }
