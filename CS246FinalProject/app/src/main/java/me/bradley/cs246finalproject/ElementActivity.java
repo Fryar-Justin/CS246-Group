@@ -57,7 +57,7 @@ public class ElementActivity extends AppCompatActivity {
 
         TextView desiredNeutrons = (TextView) findViewById(R.id.textView16);
         desiredNeutrons.setText(neut);
-        
+
 
         // create element here from values passed with intent
         int protons = Integer.parseInt(_protons);
