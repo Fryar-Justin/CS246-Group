@@ -24,6 +24,8 @@ public class ElementActivity extends AppCompatActivity {
     String elec;
     String neut;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(getClass().getName(), String.format("Created intent"));
@@ -65,12 +67,48 @@ public class ElementActivity extends AppCompatActivity {
                 "Proton: " + prot, Toast.LENGTH_SHORT).show();
 
         // create element here from values passed with intent
+        int protons = Integer.parseInt(_protons);
+        int neutrons = Integer.parseInt(_neutrons);
+        int electrons = Integer.parseInt(_electrons);
+        elementActual = new Element(protons, neutrons, electrons);
+
+        // elementTarget initialized here for testing. will be altered later to match random element
+        elementTarget = new Element(1, 1, 1);
 
         // call validate with element
+        validate(elementActual);
     }
 
+    /**********************************************************************************************
+     * validate
+     *
+     * Checks to see if created element matches the target element and displays quick feedback.
+     *******************************************************************************************/
     public void validate(Element e){
+        int confirm = 0;
+        if(elementActual.getElectrons() == elementTarget.getElectrons())
+            confirm++;
+        if(elementActual.getProtons() == elementTarget.getProtons())
+            confirm++;
+        if(elementActual.getNeutrons() == elementTarget.getNeutrons())
+            confirm++;
 
+        if(confirm == 3) {
+            Toast.makeText(this.getApplicationContext(), "You are correct!",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else if(confirm == 2) {
+            Toast.makeText(this.getApplicationContext(), "You're close! One value is off, though...",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else if(confirm == 1) {
+            Toast.makeText(this.getApplicationContext(), "Keep trying! One value is correct.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else if(confirm == 0) {
+            Toast.makeText(this.getApplicationContext(), "You'll never make it as a chemist, kid...",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void displayMessage(){
@@ -85,12 +123,15 @@ public class ElementActivity extends AppCompatActivity {
      * Picks a random item from the list of elements and returns that selected Element object
      *********************************************************************************************/
     public void randomizeElements(ArrayList<Element> tableOfElements) {
-        Toast.makeText(this.getApplicationContext(),
+
+
+
+        /*Toast.makeText(this.getApplicationContext(),
                 "Name: " + tableOfElements.get(0).getName(), Toast.LENGTH_SHORT).show();
 
         Collections.shuffle(tableOfElements);
 
         Toast.makeText(this.getApplicationContext(),
-                "Name: " + tableOfElements.get(0).getName(), Toast.LENGTH_SHORT).show();
+                "Name: " + tableOfElements.get(0).getName(), Toast.LENGTH_SHORT).show();*/
     }
 }

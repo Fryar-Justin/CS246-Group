@@ -10,6 +10,20 @@ public class Element {
     private int electrons;
     private String name;
 
+    // constructors
+    Element(int prot, int neut, int ele, String n){
+        protons = prot;
+        neutrons = neut;
+        electrons = ele;
+        name = n;
+    }
+
+    Element(int prot, int neut, int ele){
+        protons = prot;
+        neutrons = neut;
+        electrons = ele;
+    }
+
     // getters & setters
     public int getProtons(){
         return protons;

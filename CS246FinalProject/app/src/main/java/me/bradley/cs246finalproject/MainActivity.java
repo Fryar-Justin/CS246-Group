@@ -9,6 +9,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,12 +22,15 @@ public class MainActivity extends AppCompatActivity {
     protected ArrayList<Element> tableOfElements;
     protected Element holdElement;
 
+    // randomGenerator for picking random element for game
+    private Random randomGenerator;
+
     // TextView declaration
     protected TextView highScoreTextView;
 
     // Stored expected and given from user elements
     protected Element actualElement;
-    protected Element expectedElement;
+    protected Element targetElement;
 
     public static final String ELECTRON = "ELECTRON_EXTRA";
     public static final String NEUTRON = "NEUTRON_EXTRA";
@@ -54,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // populate the array of elements
+        //createArray();
+
         //Shared preferences loads the high score
         sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
 
@@ -76,6 +83,12 @@ public class MainActivity extends AppCompatActivity {
         numberPickerE.setMinValue(0);
         numberPickerE.setMaxValue(150);
         numberPickerE.setValue(0);
+
+        // create the random targetElement and show the name in MainView
+        TextView targetElementTextView = (TextView) findViewById(R.id.targetElementTextView);
+        targetElement = new Element(0, 0, 0, "TargetElementName");
+        //targetElement = randomElement();
+        targetElementTextView.setText(targetElement.getName());
     }
 
     /**********************************************************************************************
@@ -126,6 +139,21 @@ public class MainActivity extends AppCompatActivity {
 
         editor.putString(highScore, highScoreInt);
         editor.apply();
+    }
+
+    /**********************************************************************************************
+     * randomElement
+     *
+     * Gets a random element from the array
+     *******************************************************************************************/
+    public Element randomElement(){
+        //int index = randomGenerator.nextInt(tableOfElements.size());
+        Element element = new Element(0,0,0);
+        //element.setName(tableOfElements.get(index).getName());
+        //element.setElectrons(tableOfElements.get(index).getElectrons());
+        //element.setNeutrons(tableOfElements.get(index).getNeutrons());
+        //element.setProtons(tableOfElements.get(index).getProtons());
+        return element;
     }
 
     /**********************************************************************************************
