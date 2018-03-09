@@ -92,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
         // create the random targetElement and show the name in MainView
         TextView targetElementTextView = (TextView) findViewById(R.id.targetElementTextView);
         targetElement = new Element(0, 0, 0, "TargetElementName");
-        //targetElement = randomElement();
+        randomElement();
+        Log.i(TAG, "onCreate: targetElement: " + targetElement.getName());
+
         targetElementTextView.setText(targetElement.getName());
     }
 
@@ -151,14 +153,13 @@ public class MainActivity extends AppCompatActivity {
      *
      * Gets a random element from the array
      *******************************************************************************************/
-    public Element randomElement(){
-        //int index = randomGenerator.nextInt(tableOfElements.size());
-        Element element = new Element(0,0,0);
-        //element.setName(tableOfElements.get(index).getName());
-        //element.setElectrons(tableOfElements.get(index).getElectrons());
-        //element.setNeutrons(tableOfElements.get(index).getNeutrons());
-        //element.setProtons(tableOfElements.get(index).getProtons());
-        return element;
+    public void randomElement(){
+        randomGenerator = new Random();
+        int index = randomGenerator.nextInt(tableOfElements.size());
+        targetElement.setName(tableOfElements.get(index).getName());
+        targetElement.setElectrons(tableOfElements.get(index).getElectrons());
+        targetElement.setNeutrons(tableOfElements.get(index).getNeutrons());
+        targetElement.setProtons(tableOfElements.get(index).getProtons());
     }
 
     /**********************************************************************************************
