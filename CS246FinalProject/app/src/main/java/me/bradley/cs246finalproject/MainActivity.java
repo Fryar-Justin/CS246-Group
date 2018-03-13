@@ -33,15 +33,18 @@ public class MainActivity extends AppCompatActivity {
     protected Element actualElement;
     protected Element targetElement;
 
+    // Extra constant passing
     public static final String ELECTRON = "ELECTRON_EXTRA";
     public static final String NEUTRON = "NEUTRON_EXTRA";
     public static final String PROTON = "PROTON_EXTRA";
 
+    // Shared Preferences
     protected static final String highScore = "HIGH_SCORE";
 
     protected SharedPreferences sharedPreferences;
     protected SharedPreferences.Editor editor;
 
+    // Log tag
     private static final String TAG = "MAIN ACTIVITY: ";
 
     private String highScoreInt;
@@ -62,29 +65,35 @@ public class MainActivity extends AppCompatActivity {
         // populate the array of elements
         createArray();
 
+        // Log the elements within the array.
         for (int i = 0; i < tableOfElements.size(); i++) {
             Log.i(TAG, "onCreate: TOE: " + tableOfElements.get(i).getName());
         }
 
-        //Shared preferences loads the high score
+
+        // Shared preferences loads the high score
         sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
 
+        // Set textView to show the high score
         highScoreTextView = (TextView) findViewById(R.id.highScoreTextView);
         highScoreTextView.setText(sharedPreferences.getString(highScore, "0"));
 
-        //Set the values that the number pickers will have for their max/min
+        // Set the values that the number pickers will have for their max/min
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
         numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
         numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
 
+        // Set proton number picker values
         numberPickerP.setMinValue(0);
         numberPickerP.setMaxValue(150);
         numberPickerP.setValue(0);
 
+        // Set Neutron number picker values
         numberPickerN.setMinValue(0);
         numberPickerN.setMaxValue(150);
         numberPickerN.setValue(0);
 
+        // Set Electron number picker values
         numberPickerE.setMinValue(0);
         numberPickerE.setMaxValue(150);
         numberPickerE.setValue(0);
@@ -93,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
         TextView targetElementTextView = (TextView) findViewById(R.id.targetElementTextView);
         targetElement = new Element(0, 0, 0, "TargetElementName");
         randomElement();
+
+        // Log the target element
         Log.i(TAG, "onCreate: targetElement: " + targetElement.getName());
 
         targetElementTextView.setText(targetElement.getName());
@@ -111,18 +122,20 @@ public class MainActivity extends AppCompatActivity {
         String electron = "0";
         String neutron = "0";
 
-        //Find our number picker values.
+        // Find our number picker values.
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
         numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
         numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
 
+        // Get the values from the number pickers
         electron = Integer.toString(numberPickerE.getValue());
         neutron = Integer.toString(numberPickerN.getValue());
         proton = Integer.toString(numberPickerP.getValue());
 
-        //Create a new intent to display the expected and given atomic parts
+        // Create a new intent to display the expected and given atomic parts
         Intent intent = new Intent(this, ElementActivity.class);
 
+        // Pass values to the element activity
         intent.putExtra(ELECTRON, electron);
         intent.putExtra(NEUTRON, neutron);
         intent.putExtra(PROTON, proton);
@@ -140,10 +153,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop(); // Call super class method first
 
+        // Declare variables
         sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
         editor = sharedPreferences.edit();
         highScoreInt = "150";
 
+        // Save high score
         editor.putString(highScore, highScoreInt);
         editor.apply();
     }
@@ -173,43 +188,27 @@ public class MainActivity extends AppCompatActivity {
         tableOfElements = new ArrayList<Element>();
         holdElement = new Element(0, 0, 0);
 
+        // Below is the elements being added, look to the last parameter to get the element name
         tableOfElements.add(new Element(1, 0, 1, "Hydrogen"));
-
         tableOfElements.add(new Element(2, 2, 2, "Helium"));
-
         tableOfElements.add(new Element(3, 4, 3, "Lithium"));
-
         tableOfElements.add(new Element(4, 5, 4, "Beryllium"));
-
         tableOfElements.add(new Element(5, 6, 5, "Boron"));
-
         tableOfElements.add(new Element(6, 6, 6, "Carbon"));
-
         tableOfElements.add(new Element(7, 7, 7, "Nitrogen"));
-
         tableOfElements.add(new Element(8, 8, 8, "Oxygen"));
-
         tableOfElements.add(new Element(9, 10, 9, "Fluorine"));
-
         tableOfElements.add(new Element(10, 10, 10, "Neon"));
-
         tableOfElements.add(new Element(11, 12, 11, "Sodium"));
-
         tableOfElements.add(new Element(12, 12, 12, "Magnesium"));
-
         tableOfElements.add(new Element(13, 14, 13, "Aluminum"));
-
         tableOfElements.add(new Element(14, 14, 14, "Silicon"));
-
         tableOfElements.add(new Element(15, 16, 15, "Phosphorus"));
-
         tableOfElements.add(new Element(16, 16, 16, "Sulfur"));
-
         tableOfElements.add(new Element(17, 18, 17, "Chlorine"));
-
         tableOfElements.add(new Element(18, 22, 18, "Argon"));
-
         tableOfElements.add(new Element(19, 21, 19, "Potassium"));
+        tableOfElements.add(new Element(20, 20, 20, "Calcium"));
 
         tableOfElements.add(new Element(21, 20, 20, "Calcium"));
 

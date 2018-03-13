@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ElementActivity extends AppCompatActivity {
 
+    // Target and user given element
     public Element elementTarget;
     public Element elementActual;
 
@@ -27,13 +28,17 @@ public class ElementActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Log that onCreate starts
         Log.d(getClass().getName(), String.format("Created intent"));
 
+        // Run super method
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_element);
 
+        // Change content view
+        setContentView(R.layout.activity_element);
         Intent intent = getIntent();
 
+        // Get parameters from mainActivity
         _protons = intent.getStringExtra(MainActivity.PROTON);
         _electrons = intent.getStringExtra(MainActivity.ELECTRON);
         _neutrons = intent.getStringExtra(MainActivity.NEUTRON);
@@ -78,6 +83,8 @@ public class ElementActivity extends AppCompatActivity {
      *******************************************************************************************/
     public void validate(Element e){
         int confirm = 0;
+
+        // Test the three values and increment the points value for each correct element
         if(elementActual.getElectrons() == elementTarget.getElectrons())
             confirm++;
         if(elementActual.getProtons() == elementTarget.getProtons())
