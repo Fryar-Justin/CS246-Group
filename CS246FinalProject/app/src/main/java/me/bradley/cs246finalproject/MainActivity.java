@@ -211,7 +211,47 @@ public class MainActivity extends AppCompatActivity {
 
         tableOfElements.add(new Element(19, 21, 19, "Potassium"));
 
-        tableOfElements.add(new Element(20, 20, 20, "Calcium"));
+        tableOfElements.add(new Element(21, 20, 20, "Calcium"));
+
+        tableOfElements.add(new Element(22, 24, 22, "Scandium"));
+
+        tableOfElements.add(new Element(23, 26, 23, "Titanium"));
+
+        tableOfElements.add(new Element(24, 26, 24, "Vanadium"));
+
+        tableOfElements.add(new Element(25, 28, 25, "Chromium"));
+
+        tableOfElements.add(new Element(26, 30, 26, "Manganese"));
+
+        tableOfElements.add(new Element(27, 30, 27, "Iron"));
+
+        tableOfElements.add(new Element(28, 31, 28, "Cobalt"));
+
+        tableOfElements.add(new Element(29, 30, 29, "Nickel"));
+
+        tableOfElements.add(new Element(30, 35, 30, "Copper"));
+
+        tableOfElements.add(new Element(31, 35, 31, "Zinc"));
+
+        tableOfElements.add(new Element(32, 39, 32, "Gallium"));
+
+        tableOfElements.add(new Element(33, 41, 33, "Germanium"));
+
+        tableOfElements.add(new Element(34, 42, 34, "Arsenic"));
+
+        tableOfElements.add(new Element(35, 45, 35, "Selenium"));
+
+        tableOfElements.add(new Element(36, 45, 36, "Bromine"));
+
+        tableOfElements.add(new Element(37, 48, 37, "Krypton"));
+
+        tableOfElements.add(new Element(38, 48, 38, "Rubidium"));
+
+        tableOfElements.add(new Element(39, 50, 39, "Strontium"));
+
+        tableOfElements.add(new Element(40, 50, 40, "Yttrium"));
+
+        tableOfElements.add(new Element(41, 51, 41, "Zirconium"));
 
         return;
     }
