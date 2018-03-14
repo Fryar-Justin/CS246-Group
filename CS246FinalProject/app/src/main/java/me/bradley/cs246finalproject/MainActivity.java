@@ -169,12 +169,17 @@ public class MainActivity extends AppCompatActivity {
      * Gets a random element from the array
      *******************************************************************************************/
     public void randomElement(){
+        Log.i(TAG, "randomElement called");
         randomGenerator = new Random();
         int index = randomGenerator.nextInt(tableOfElements.size());
         targetElement.setName(tableOfElements.get(index).getName());
         targetElement.setElectrons(tableOfElements.get(index).getElectrons());
         targetElement.setNeutrons(tableOfElements.get(index).getNeutrons());
         targetElement.setProtons(tableOfElements.get(index).getProtons());
+        Log.i(TAG, "randomElement name: " + targetElement.getName());
+        Log.i(TAG, "randomElement prot: " + targetElement.getProtons());
+        Log.i(TAG, "randomElement neut: " + targetElement.getNeutrons());
+        Log.i(TAG, "randomElement elec: " + targetElement.getElectrons());
     }
 
     /**********************************************************************************************
