@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String ELECTRON = "ELECTRON_EXTRA";
     public static final String NEUTRON = "NEUTRON_EXTRA";
     public static final String PROTON = "PROTON_EXTRA";
+    public static final String TARGETELEMENT = "TARGET_ELEMENT";
 
     // Shared Preferences
     protected static final String highScore = "HIGH_SCORE";
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MAIN ACTIVITY: ";
 
     private String highScoreInt;
+    private String target;
 
     /**********************************************************************************************
      * onCreate
@@ -103,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
         targetElement = new Element(0, 0, 0, "TargetElementName");
         randomElement();
 
+        // create GSON
+        Gson gson = new Gson();
+        target = gson.toJson(targetElement);
+
         // Log the target element
         Log.i(TAG, "onCreate: targetElement: " + targetElement.getName());
 
@@ -139,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(ELECTRON, electron);
         intent.putExtra(NEUTRON, neutron);
         intent.putExtra(PROTON, proton);
+        intent.putExtra(TARGETELEMENT, target);
 
         startActivity(intent);
         Log.i(TAG, "New intent started");

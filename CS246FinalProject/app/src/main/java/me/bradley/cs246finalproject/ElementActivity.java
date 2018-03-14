@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 public class ElementActivity extends AppCompatActivity {
@@ -23,6 +25,8 @@ public class ElementActivity extends AppCompatActivity {
     String prot;
     String elec;
     String neut;
+
+    private static final String TAG = "ElementActivity";
 
 
 
@@ -42,6 +46,10 @@ public class ElementActivity extends AppCompatActivity {
         _protons = intent.getStringExtra(MainActivity.PROTON);
         _electrons = intent.getStringExtra(MainActivity.ELECTRON);
         _neutrons = intent.getStringExtra(MainActivity.NEUTRON);
+
+        Gson gson = new Gson();
+        elementTarget = gson.fromJson(intent.getStringExtra(MainActivity.TARGETELEMENT), Element.class);
+        Log.i(TAG, "elementTarget: " + elementTarget.getName());
 
         // display the information in the TextViews
         TextView actualProtons = (TextView) findViewById(R.id.textView5);
@@ -70,7 +78,7 @@ public class ElementActivity extends AppCompatActivity {
         elementActual = new Element(protons, neutrons, electrons);
 
         // elementTarget initialized here for testing. will be altered later to match random element
-        elementTarget = new Element(1, 1, 1);
+        //elementTarget = new Element(1, 1, 1);
 
         // call validate with element
         validate(elementActual);
@@ -113,24 +121,5 @@ public class ElementActivity extends AppCompatActivity {
     public void displayMessage(){
 
     }
-
-    /**********************************************************************************************
-     * randomizeElements
-     * @returns an Element object containing the details of the selected element for the student
-     * to interact with
-     *
-     * Picks a random item from the list of elements and returns that selected Element object
-     *********************************************************************************************/
-    public void randomizeElements(ArrayList<Element> tableOfElements) {
-
-
-
-        /*Toast.makeText(this.getApplicationContext(),
-                "Name: " + tableOfElements.get(0).getName(), Toast.LENGTH_SHORT).show();
-
-        Collections.shuffle(tableOfElements);
-
-        Toast.makeText(this.getApplicationContext(),
-                "Name: " + tableOfElements.get(0).getName(), Toast.LENGTH_SHORT).show();*/
-    }
+    
 }
