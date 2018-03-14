@@ -141,6 +141,21 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(PROTON, proton);
 
         startActivity(intent);
+        Log.i(TAG, "New intent started");
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+
+        Log.i(TAG, "onPause called");
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        Log.i(TAG, "onResume called");
     }
 
     /**********************************************************************************************
