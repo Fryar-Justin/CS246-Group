@@ -22,9 +22,9 @@ public class ElementActivity extends AppCompatActivity {
     String _electrons;
     String _neutrons;
 
-    String prot;
-    String elec;
-    String neut;
+    String target_prot;
+    String target_elec;
+    String target_neut;
 
     private static final String TAG = "ElementActivity";
 
@@ -49,7 +49,15 @@ public class ElementActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
         elementTarget = gson.fromJson(intent.getStringExtra(MainActivity.TARGETELEMENT), Element.class);
-        Log.i(TAG, "elementTarget: " + elementTarget.getName());
+        target_prot = Integer.toString(elementTarget.getProtons());
+        target_elec = Integer.toString(elementTarget.getElectrons());
+        target_neut = Integer.toString(elementTarget.getNeutrons());
+
+
+        Log.i(TAG, "elementTarget: " + elementTarget.getName()
+                + " p: " + elementTarget.getProtons()
+                + " n: " + elementTarget.getNeutrons()
+                + " e: " + elementTarget.getElectrons());
 
         // display the information in the TextViews
         TextView actualProtons = (TextView) findViewById(R.id.textView5);
@@ -62,13 +70,13 @@ public class ElementActivity extends AppCompatActivity {
         actualNeutrons.setText(_neutrons);
 
         TextView desiredProtons = (TextView) findViewById(R.id.textView14);
-        desiredProtons.setText(prot);
+        desiredProtons.setText(target_prot);
 
         TextView desiredElectrons = (TextView) findViewById(R.id.textView15);
-        desiredElectrons.setText(elec);
+        desiredElectrons.setText(target_elec);
 
         TextView desiredNeutrons = (TextView) findViewById(R.id.textView16);
-        desiredNeutrons.setText(neut);
+        desiredNeutrons.setText(target_neut);
 
 
         // create element here from values passed with intent
@@ -81,7 +89,7 @@ public class ElementActivity extends AppCompatActivity {
         //elementTarget = new Element(1, 1, 1);
 
         // call validate with element
-        validate(elementActual);
+        validate();
     }
 
     /**********************************************************************************************
@@ -89,7 +97,7 @@ public class ElementActivity extends AppCompatActivity {
      *
      * Checks to see if created element matches the target element and displays quick feedback.
      *******************************************************************************************/
-    public void validate(Element e){
+    public void validate(){
         int confirm = 0;
 
         // Test the three values and increment the points value for each correct element
@@ -116,6 +124,7 @@ public class ElementActivity extends AppCompatActivity {
             Toast.makeText(this.getApplicationContext(), "You'll never make it as a chemist, kid...",
                     Toast.LENGTH_SHORT).show();
         }
+        Log.i(TAG, "confirm: " + confirm);
     }
 
     public void displayMessage(){
