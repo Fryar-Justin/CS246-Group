@@ -17,7 +17,7 @@ public class ElementActivity extends AppCompatActivity {
     public Element elementTarget;
     public Element elementActual;
 
-    // added these for viewing. could also create element in MainActivity.
+    // strings for display purposes
     String _protons;
     String _electrons;
     String _neutrons;
@@ -47,6 +47,7 @@ public class ElementActivity extends AppCompatActivity {
         _electrons = intent.getStringExtra(MainActivity.ELECTRON);
         _neutrons = intent.getStringExtra(MainActivity.NEUTRON);
 
+        // deserialize the targetElement from MainActivity & assign values to strings for display
         Gson gson = new Gson();
         elementTarget = gson.fromJson(intent.getStringExtra(MainActivity.TARGETELEMENT), Element.class);
         target_prot = Integer.toString(elementTarget.getProtons());
@@ -84,9 +85,6 @@ public class ElementActivity extends AppCompatActivity {
         int neutrons = Integer.parseInt(_neutrons);
         int electrons = Integer.parseInt(_electrons);
         elementActual = new Element(protons, neutrons, electrons);
-
-        // elementTarget initialized here for testing. will be altered later to match random element
-        //elementTarget = new Element(1, 1, 1);
 
         // call validate with element
         validate();
