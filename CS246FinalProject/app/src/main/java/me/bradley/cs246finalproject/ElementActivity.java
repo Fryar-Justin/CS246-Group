@@ -8,9 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
-
 public class ElementActivity extends AppCompatActivity {
 
     // Target and user given element
@@ -25,6 +22,8 @@ public class ElementActivity extends AppCompatActivity {
     String target_prot;
     String target_elec;
     String target_neut;
+
+    static final String POINTS = "POINT_EXTRA";
 
     private static final String TAG = "ElementActivity";
 

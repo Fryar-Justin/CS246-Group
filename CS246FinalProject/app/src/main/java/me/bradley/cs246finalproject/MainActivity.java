@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String highScoreInt;
     private String target;
+    private int points;
 
     /**********************************************************************************************
      * onCreate
@@ -163,6 +164,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
+
+        String temp;
+
+        Intent intent = new Intent(this, ElementActivity.class);
+
+        temp = intent.getStringExtra(ElementActivity.POINTS);
+
+        if (temp == "1") {
+            points += 1;
+        }
+        else if (temp == "2") {
+            points += 2;
+        }
+        else if (temp == "3") {
+            points += 3;
+
+            // Randomize the element
+            randomElement();
+        }
+
+        // Log the element
+        Log.i(TAG, "onResume: Random Element Info");
+        Log.i(TAG, "onResume: Proton: " + targetElement.getProtons());
+        Log.i(TAG, "onResume: Neutron: " + targetElement.getNeutrons());
+        Log.i(TAG, "onResume: Electron: " + targetElement.getElectrons());
+        Log.i(TAG, "onResume: Name: " + targetElement.getName());
+
 
         Log.i(TAG, "onResume called");
     }
