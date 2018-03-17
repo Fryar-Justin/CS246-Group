@@ -11,6 +11,13 @@ public class Element {
     private String name;
 
     // constructors
+    Element() {
+        protons = 0;
+        neutrons = 0;
+        electrons = 0;
+        name = "default";
+    }
+
     Element(int prot, int neut, int ele, String n){
         protons = prot;
         neutrons = neut;
@@ -55,5 +62,21 @@ public class Element {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    /**********************************************************************************************
+     * isEqual
+     *
+     * Determines if two Element objects are the same
+     *******************************************************************************************/
+    public boolean isEqual(Element element) {
+        if (element.getProtons() != this.protons)
+            return false;
+        if (element.getElectrons() != this.electrons)
+            return false;
+        if (element.getNeutrons() != this.neutrons)
+            return false;
+
+        return true;
     }
 }

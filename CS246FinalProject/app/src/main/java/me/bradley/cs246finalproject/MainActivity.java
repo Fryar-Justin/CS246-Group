@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String highScoreInt;
     private String target;
-    private int points;
+    private int points = 0;
 
     /**********************************************************************************************
      * onCreate
@@ -141,6 +141,16 @@ public class MainActivity extends AppCompatActivity {
         neutron = Integer.toString(numberPickerN.getValue());
         proton = Integer.toString(numberPickerP.getValue());
 
+        Log.i(TAG, "MainActivity:onSubmit: numberPickerE.getValue() = " + numberPickerE.getValue());
+
+        // Assign the user's input to the actualElement variable pen n
+        actualElement = new Element (
+                Integer.parseInt(proton),
+                Integer.parseInt(neutron),
+                Integer.parseInt(electron),
+                targetElement.getName()
+        );
+
         // Create a new intent to display the expected and given atomic parts
         Intent intent = new Intent(this, ElementActivity.class);
 
@@ -151,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(TARGETELEMENT, target);
 
         startActivity(intent);
+        updateScore();
         Log.i(TAG, "New intent started");
     }
 
@@ -163,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume(){
+        Log.i(TAG, "onResume called");
         super.onResume();
 
         String temp;
@@ -190,9 +202,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume: Neutron: " + targetElement.getNeutrons());
         Log.i(TAG, "onResume: Electron: " + targetElement.getElectrons());
         Log.i(TAG, "onResume: Name: " + targetElement.getName());
-
-
-        Log.i(TAG, "onResume called");
+        Log.i(TAG, "onResume: points: " + this.points);
     }
 
     /**********************************************************************************************
@@ -213,6 +223,62 @@ public class MainActivity extends AppCompatActivity {
         // Save high score
         editor.putString(highScore, highScoreInt);
         editor.apply();
+    }
+
+    /**********************************************************************************************
+     * updateScore
+     *
+     * Calculates the score for a specific instance of a target element
+     * According to the sponsor the points should be weighted accordingly:
+     *
+     *      Note: for each element they get wrong they -5 points, each right +10
+     *      1) Correct electrons 33%
+     *      2) Correct protons   33%
+     *      3) Correct neutorons 33%
+     *
+     * If we are able to implement functionality for the correct number of electrons in the correct
+     * orbits we should split up the weighting of points evenly.
+     *******************************************************************************************/
+    public void updateScore() {
+        // Check to see what they got right, they can lose points for incorrect responses
+        Log.i(TAG, "actualElement.electrons: " + actualElement.getElectrons());
+        Log.i(TAG, "actualElement.protons: " + actualElement.getProtons());
+        Log.i(TAG, "actualElement.neutrons: " + actualElement.getNeutrons());
+        Log.i(TAG, "Points before modification: " + points);
+        Log.i(TAG, "Are they equal?: " + targetElement.isEqual(actualElement));
+
+        Log.i(TAG, "Comparison:Electrons: " +
+                "-" + actualElement.getElectrons() +
+                "-" + targetElement.getElectrons() + "-:" +
+                (targetElement.getElectrons() == actualElement.getElectrons()));
+        Log.i(TAG, "Comparison:Protons: " +
+                "-" + actualElement.getProtons() +
+                "-" + targetElement.getProtons() + "-:" +
+                (targetElement.getProtons() == actualElement.getProtons()));
+        Log.i(TAG, "Comparison:Neutrons: " +
+                "-" + actualElement.getNeutrons() +
+                "-" + targetElement.getNeutrons() + "-:" +
+                (targetElement.getNeutrons() == actualElement.getNeutrons()));
+
+        // Electrons
+        if (targetElement.getElectrons() == actualElement.getElectrons()) {
+            points += 10;
+        }
+        // Protons
+        if (targetElement.getProtons() == actualElement.getProtons()) {
+            points += 10;
+        }
+        // Neutrons
+        if (targetElement.getNeutrons() == actualElement.getNeutrons()) {
+            points += 10;
+        }
+
+        Log.i(TAG, "Points after modification: " + points);
+
+        // Show the player their score
+        TextView pointBox = (TextView) findViewById(R.id.playerPointsTextView);
+        pointBox.setText(Integer.toString(points));
+        Log.i(TAG, "Comparison:TextView:Points: " + pointBox.getText());
     }
 
     /**********************************************************************************************

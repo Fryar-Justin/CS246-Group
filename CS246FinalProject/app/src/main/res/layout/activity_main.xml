@@ -7,7 +7,7 @@
     tools:context="me.bradley.cs246finalproject.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/playerPointsTextView"
         android:layout_width="58dp"
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
@@ -118,5 +118,5 @@
         app:layout_constraintBottom_toTopOf="@+id/nuetronTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/playerPointsTextView" />
 </android.support.constraint.ConstraintLayout>
