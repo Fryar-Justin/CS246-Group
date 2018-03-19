@@ -2,7 +2,9 @@ package me.bradley.cs246finalproject;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -172,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onPause called");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onResume(){
         Log.i(TAG, "onResume called");
@@ -183,18 +186,10 @@ public class MainActivity extends AppCompatActivity {
 
         temp = intent.getStringExtra(ElementActivity.POINTS);
 
-        if (temp == "1") {
-            points += 1;
-        }
-        else if (temp == "2") {
-            points += 2;
-        }
-        else if (temp == "3") {
-            points += 3;
-
-            // Randomize the element
+        if (targetElement.getProtons() == numberPickerP.getValue() &&
+                targetElement.getNeutrons() == numberPickerN.getValue()&&
+                targetElement.getElectrons() == numberPickerE.getValue())
             randomElement();
-        }
 
         // Log the element
         Log.i(TAG, "onResume: Random Element Info");
