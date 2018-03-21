@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
         actualElement = new Element(numberPickerP.getValue(),
                 numberPickerN.getValue(),
                 numberPickerE.getValue());
-        updateScore();
+        updateScore(); // update score has to be called after actualElement is created - otherwise we crash
 
         Log.i(TAG, "onResume: Actual");
         Log.i(TAG, "onResume: Proton: " + actualElement.getProtons());
