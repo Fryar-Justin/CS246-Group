@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(TARGETELEMENT, target);
 
         startActivity(intent);
-        updateScore();
+
         Log.i(TAG, "New intent started");
     }
 
@@ -191,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume called");
         super.onResume();
 
-
         numberPickerE = findViewById(R.id.electronNumberPicker);
         numberPickerN = findViewById(R.id.neutronNumberPicker);
         numberPickerP = findViewById(R.id.protonNumberPicker);
@@ -199,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
         actualElement = new Element(numberPickerP.getValue(),
                 numberPickerN.getValue(),
                 numberPickerE.getValue());
+        updateScore();
 
         Log.i(TAG, "onResume: Actual");
         Log.i(TAG, "onResume: Proton: " + actualElement.getProtons());
