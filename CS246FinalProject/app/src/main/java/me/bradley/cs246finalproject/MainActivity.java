@@ -191,16 +191,33 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume called");
         super.onResume();
 
-        String temp;
 
-        Intent intent = new Intent(this, ElementActivity.class);
+        numberPickerE = findViewById(R.id.electronNumberPicker);
+        numberPickerN = findViewById(R.id.neutronNumberPicker);
+        numberPickerP = findViewById(R.id.protonNumberPicker);
 
-        temp = intent.getStringExtra(ElementActivity.POINTS);
+        actualElement = new Element(numberPickerP.getValue(),
+                numberPickerN.getValue(),
+                numberPickerE.getValue());
 
-        if (targetElement.getProtons() == numberPickerP.getValue() &&
-                targetElement.getNeutrons() == numberPickerN.getValue()&&
-                targetElement.getElectrons() == numberPickerE.getValue())
+        Log.i(TAG, "onResume: Actual");
+        Log.i(TAG, "onResume: Proton: " + actualElement.getProtons());
+        Log.i(TAG, "onResume: Neutron: " + actualElement.getNeutrons());
+        Log.i(TAG, "onResume: Electron: " + actualElement.getElectrons());
+
+        Log.i(TAG, "onResume: Target");
+        Log.i(TAG, "onResume: Proton: " + targetElement.getProtons());
+        Log.i(TAG, "onResume: Neutron: " + targetElement.getNeutrons());
+        Log.i(TAG, "onResume: Electron: " + targetElement.getElectrons());
+
+        Log.i(TAG, "onResume: TARGET == ACTUAL: " + targetElement.isEqual(actualElement));
+        if (targetElement.isEqual(actualElement)) {
             randomElement();
+            Log.i(TAG, "onResume: CREATING NEW ELEMENT");
+        }
+
+        Log.i(TAG, "onResume: New Element Made");
+
 
         // Log the element
         Log.i(TAG, "onResume: Random Element Info");
