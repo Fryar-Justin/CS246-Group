@@ -1,7 +1,9 @@
 package me.bradley.cs246finalproject;
 
 /**
- * Created by Chris on 2/27/2018.
+ * Element
+ *
+ * @author Chris
  */
 
 public class Element {
@@ -64,11 +66,9 @@ public class Element {
         this.name = name;
     }
 
-    /**********************************************************************************************
-     * isEqual
-     *
-     * Determines if two Element objects are the same
-     *******************************************************************************************/
+    /**
+     * isEqual - Determines if two Element objects are the same
+     */
     public boolean isEqual(Element element) {
         if (element.getProtons() != this.protons)
             return false;

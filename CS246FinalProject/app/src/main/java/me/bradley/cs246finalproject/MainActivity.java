@@ -16,6 +16,12 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * MainActivity - handles creation of elements, scoring, and lays foundation for game.
+ *
+ * @author Chris, Bradley, Justin
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     // These are the containers for the selected values of the elements of the elements
@@ -56,14 +62,13 @@ public class MainActivity extends AppCompatActivity {
     private String target;
     private int points = 0;
 
-    /**********************************************************************************************
-     * onCreate
-     * @param savedInstanceState
-     *
-     * This is the method run as the intent is created. It will load everything that we need to have
+    /**
+     * onCreate - This is the method run as the intent is created. It will load everything that we need to have
      * loaded so that the user can interact with the application. This specific onCreate function
      * will load a target element to have the user attempt to guess the atomic parts.
-     *********************************************************************************************/
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,13 +125,12 @@ public class MainActivity extends AppCompatActivity {
         targetElementTextView.setText(targetElement.getName());
     }
 
-    /**********************************************************************************************
-     * onSubmit
-     * @param view
-     *
-     * This will pass the user given atomic parts, and test them against our target element. It will
+    /**
+     * onSubmit - This will pass the user given atomic parts, and test them against our target element. It will
      * then call ElementActivity which will display the user given input, and the expected results
-     *********************************************************************************************/
+     *
+     * @param view
+     */
     public void onSubmit(View view) {
         //Initialize values
         String proton = "0";
@@ -167,6 +171,9 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "New intent started");
     }
 
+    /**
+     * onPause - onPause handles cleanup when activity is paused.
+     */
     @Override
     protected void onPause(){
         super.onPause();
@@ -174,6 +181,10 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onPause called");
     }
 
+    /**
+     * onResume - onResume handles cycling of elements and addition of points after user submits element to
+     * ElementActivity.
+     */
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onResume(){
@@ -200,12 +211,10 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume: points: " + this.points);
     }
 
-    /**********************************************************************************************
-     * onStop
-     *
-     * When the application stops we want to test to see if the current score is greater than the
+    /**
+     * onStop - When the application stops we want to test to see if the current score is greater than the
      * high score, and if it is then we want to set the current score to the high score
-     *******************************************************************************************/
+     */
     @Override
     protected void onStop() {
         super.onStop(); // Call super class method first
@@ -220,20 +229,18 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    /**********************************************************************************************
-     * updateScore
+    /**
+     * updateScore - Calculates the score for a specific instance of a target element
+     * According to the sponsor the points should be weighted accordingly:<br>
+     *     Note: for each element they get wrong they -5 points, each right +10<br>
+     *      1) Correct electrons 33%<br>
+     *      2) Correct protons   33%<br>
+     *      3) Correct neutorons 33%<br>
      *
-     * Calculates the score for a specific instance of a target element
-     * According to the sponsor the points should be weighted accordingly:
-     *
-     *      Note: for each element they get wrong they -5 points, each right +10
-     *      1) Correct electrons 33%
-     *      2) Correct protons   33%
-     *      3) Correct neutorons 33%
      *
      * If we are able to implement functionality for the correct number of electrons in the correct
      * orbits we should split up the weighting of points evenly.
-     *******************************************************************************************/
+     */
     public void updateScore() {
         // Check to see what they got right, they can lose points for incorrect responses
         Log.i(TAG, "actualElement.electrons: " + actualElement.getElectrons());
@@ -276,11 +283,9 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "Comparison:TextView:Points: " + pointBox.getText());
     }
 
-    /**********************************************************************************************
-     * randomElement
-     *
-     * Gets a random element from the array
-     *******************************************************************************************/
+    /**
+     * randomElement - Gets a random element from the array
+     */
     public void randomElement(){
         Log.i(TAG, "randomElement called");
         randomGenerator = new Random();
@@ -295,13 +300,11 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "randomElement elec: " + targetElement.getElectrons());
     }
 
-    /**********************************************************************************************
-     * createArray
-     * @returns an array containing the possible elements we will test the users knowledge on
-     *
+    /**
+     * createArray - returns an array containing the possible elements we will test the users knowledge on<br>
      * This creates a hard coded array that will be randomly used to test the user's knowledge on
      * elements. Currently it contains the first 20 elements on the Periodic Table Of Elements.
-     *********************************************************************************************/
+     */
     private void createArray() {
         tableOfElements = new ArrayList<Element>();
         holdElement = new Element(0, 0, 0);

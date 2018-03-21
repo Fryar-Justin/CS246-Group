@@ -8,6 +8,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+
+/**
+ * ElementActivity
+ *
+ * @author Chris, Bradley, Justin
+ */
 public class ElementActivity extends AppCompatActivity {
 
     // Target and user given element
@@ -28,7 +34,12 @@ public class ElementActivity extends AppCompatActivity {
     private static final String TAG = "ElementActivity";
 
 
-
+    /**
+     * onCreate obtains the element from MainActivity, creates elements, and is the basis for
+     * calling other functions related to the elements.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Log that onCreate starts
@@ -89,11 +100,9 @@ public class ElementActivity extends AppCompatActivity {
         validate();
     }
 
-    /**********************************************************************************************
-     * validate
-     *
-     * Checks to see if created element matches the target element and displays quick feedback.
-     *******************************************************************************************/
+    /**
+     * validate - Checks to see if created element matches the target element and displays quick feedback.
+     */
     public void validate(){
         int confirm = 0;
 
