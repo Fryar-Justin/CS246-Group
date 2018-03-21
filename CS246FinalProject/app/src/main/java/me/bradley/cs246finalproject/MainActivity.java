@@ -160,6 +160,10 @@ public class MainActivity extends AppCompatActivity {
         // Create a new intent to display the expected and given atomic parts
         Intent intent = new Intent(this, ElementActivity.class);
 
+        // create GSON
+        Gson gson = new Gson();
+        target = gson.toJson(targetElement);
+
         // Pass values to the element activity
         intent.putExtra(ELECTRON, electron);
         intent.putExtra(NEUTRON, neutron);
@@ -188,6 +192,8 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onResume(){
+        TextView targetElementTextView = (TextView) findViewById(R.id.targetElementTextView);
+
         Log.i(TAG, "onResume called");
         super.onResume();
 
@@ -226,6 +232,8 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume: Electron: " + targetElement.getElectrons());
         Log.i(TAG, "onResume: Name: " + targetElement.getName());
         Log.i(TAG, "onResume: points: " + this.points);
+
+        targetElementTextView.setText(targetElement.getName());
     }
 
     /**
