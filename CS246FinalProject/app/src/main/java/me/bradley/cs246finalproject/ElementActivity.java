@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,10 @@ public class ElementActivity extends AppCompatActivity {
 
     private static final String TAG = "ElementActivity";
 
+    public void close(View view) {
+        finish();
+        return;
+    }
 
     /**
      * onCreate obtains the element from MainActivity, creates elements, and is the basis for
