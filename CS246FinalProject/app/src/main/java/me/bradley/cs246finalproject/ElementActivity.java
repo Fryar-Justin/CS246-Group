@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,50 @@ import com.google.gson.Gson;
  * @author Chris, Bradley, Justin
  */
 public class ElementActivity extends AppCompatActivity {
+
+    // atomic symbol files
+    private Integer images[] = {R.drawable.hydrogen,
+            R.drawable.helium,
+            R.drawable.lithium,
+            R.drawable.beryllium,
+            R.drawable.boron,
+            R.drawable.carbon,
+            R.drawable.nitrogen,
+            R.drawable.oxygen,
+            R.drawable.fluorine,
+            R.drawable.neon,
+            R.drawable.sodium,
+            R.drawable.magnesium,
+            R.drawable.aluminum,
+            R.drawable.silicon,
+            R.drawable.phosphorus,
+            R.drawable.sulfur,
+            R.drawable.chlorine,
+            R.drawable.argon,
+            R.drawable.potassium,
+            R.drawable.calcium,
+            R.drawable.scandium,
+            R.drawable.titanium,
+            R.drawable.vanadium,
+            R.drawable.chromium,
+            R.drawable.manganese,
+            R.drawable.iron,
+            R.drawable.cobalt,
+            R.drawable.nickel,
+            R.drawable.copper,
+            R.drawable.zinc,
+            R.drawable.gallium,
+            R.drawable.germanium,
+            R.drawable.arsenic,
+            R.drawable.selenium,
+            R.drawable.bromine,
+            R.drawable.krypton,
+            R.drawable.rubidium,
+            R.drawable.strontium,
+            R.drawable.yttrium,
+            R.drawable.zirconium
+    };
+    private int currentImage = 0;
 
     // Target and user given element
     public Element elementTarget;
@@ -103,6 +148,11 @@ public class ElementActivity extends AppCompatActivity {
 
         // call validate with element
         validate();
+
+        // display image of element
+        ImageView imageView = (ImageView) findViewById(R.id.imageView1);
+        imageView.setImageResource(images[currentImage]);
+        displayImage(imageView);
     }
 
     /**
@@ -136,6 +186,10 @@ public class ElementActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
         Log.i(TAG, "confirm: " + confirm);
+    }
+
+    public void displayImage(ImageView view){
+        view.setImageResource(images[elementTarget.getProtons() - 1]);
     }
 
     public void displayMessage(){
