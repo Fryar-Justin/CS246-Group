@@ -36,7 +36,10 @@ public class MenuActivity extends AppCompatActivity {
      * @param view
      */
     public void onTutorial(View view) {
-        Toast.makeText(this.getApplicationContext(), "This is where a tutorial will show up",
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this.getApplicationContext(), "This is where a tutorial will show up",
+//                Toast.LENGTH_SHORT).show();
+        Intent popActivity = new Intent(this, Pop.class);
+
+        startActivity(popActivity);
     }
 }
