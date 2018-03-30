@@ -25,4 +25,6 @@
             <p>The goal is to get the best score possible. Good Luck!</p>
         ]]>
     </string>
+    <string name="HighScore">High Score:</string>
+    <string name="YourScore">Your Score:</string>
 </resources>

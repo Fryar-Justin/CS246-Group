@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
     private String highScoreInt;
     private String target;
     private int points = 0;
+    private boolean electronPointsAwarded = false;
+    private boolean neutronPointsAwarded = false;
+    private boolean protonPointsAwarded = false;
     private int currentImage = 0;
 
     /**
@@ -84,13 +87,12 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "onCreate: TOE: " + tableOfElements.get(i).getName());
         }
 
-
         // Shared preferences loads the high score
         sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
+        highScoreInt = sharedPreferences.getString(highScore, "0");
 
-        // Set textView to show the high score
-        highScoreTextView = (TextView) findViewById(R.id.highScoreTextView);
-        highScoreTextView.setText(sharedPreferences.getString(highScore, "0"));
+        // update the current high score
+        updateHighScoreToTextView();
 
         // Set the values that the number pickers will have for their max/min
         numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
@@ -212,7 +214,9 @@ public class MainActivity extends AppCompatActivity {
         actualElement = new Element(numberPickerP.getValue(),
                 numberPickerN.getValue(),
                 numberPickerE.getValue());
-        updateScore(); // update score has to be called after actualElement is created - otherwise we crash
+
+        // handle the scoring
+        updateScore();
 
         Log.i(TAG, "onResume: Actual");
         Log.i(TAG, "onResume: Proton: " + actualElement.getProtons());
@@ -228,6 +232,11 @@ public class MainActivity extends AppCompatActivity {
         if (targetElement.isEqual(actualElement)) {
             randomElement();
             Log.i(TAG, "onResume: CREATING NEW ELEMENT");
+
+            // reset the point tracking
+            electronPointsAwarded = false;
+            neutronPointsAwarded = false;
+            protonPointsAwarded = false;
         }
 
         Log.i(TAG, "onResume: New Element Made");
@@ -257,14 +266,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop(); // Call super class method first
 
-        // Declare variables
-        sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        highScoreInt = "150";
-
         // Save high score
-        editor.putString(highScore, highScoreInt);
-        editor.apply();
+        saveHighScoreToPreferences();
     }
 
     /**
@@ -275,11 +278,96 @@ public class MainActivity extends AppCompatActivity {
      *      2) Correct protons   33%<br>
      *      3) Correct neutorons 33%<br>
      *
-     *
      * If we are able to implement functionality for the correct number of electrons in the correct
      * orbits we should split up the weighting of points evenly.
      */
     public void updateScore() {
+        // log the point information
+        logScoreInformation();
+
+        // the following doesn't allow you to gain duplicate points from the same element
+        // Electrons
+        if (targetElement.getElectrons() == actualElement.getElectrons()) {
+            if (!electronPointsAwarded) {
+                points += 10;
+                electronPointsAwarded = true;
+            }
+        }
+        // Protons
+        if (targetElement.getProtons() == actualElement.getProtons()) {
+            if (!protonPointsAwarded) {
+                points += 10;
+                protonPointsAwarded = true;
+            }
+        }
+        // Neutrons
+        if (targetElement.getNeutrons() == actualElement.getNeutrons()) {
+            if (!neutronPointsAwarded) {
+                points += 10;
+                protonPointsAwarded = true;
+            }
+        }
+
+        Log.i(TAG, "Points after modification: " + points);
+
+        // Show the player their score
+        TextView pointBox = (TextView) findViewById(R.id.playerPointsTextView);
+        pointBox.setText(Integer.toString(points));
+        Log.i(TAG, "Comparison:TextView:Points: " + pointBox.getText());
+
+        // save and display high score
+        saveAndDisplayHighScore();
+
+    }
+
+    /**
+     * saveAndDisplayHighScore - First, saves the high score to the preference set
+     *                           Second, updates the high score view to the current high score preference
+     */
+    private void saveAndDisplayHighScore() {
+        // save the highest score to the highscore preference
+        saveHighScoreToPreferences();
+        // update the high score view to the latest high score
+        updateHighScoreToTextView();
+    }
+
+    /**
+     * saveHighScoreToPreferences - Saves the high score to the preference set and
+     *                              Update the local highScoreInt variable to the current high
+     */
+    private void saveHighScoreToPreferences() {
+        // save the new high score to the preference set
+        assert(highScoreInt != null);
+        if (Integer.parseInt(highScoreInt) < points) {
+            // retrieve the preference set
+            sharedPreferences = getSharedPreferences(highScore, MODE_PRIVATE);
+            editor = sharedPreferences.edit();
+            // save the new high score
+            editor.putString(highScore, Integer.toString(points));
+            editor.apply();
+
+            // update the highScoreInt variable
+            highScoreInt = Integer.toString(points);
+        }
+    }
+
+    /**
+     * updateHighScoreToTextView - Updates the high score view to the highscore preference
+     */
+    private void updateHighScoreToTextView() {
+        String highPreference = getSharedPreferences(highScore, MODE_PRIVATE)
+                .getString(highScore, highScore + ": No High Score!");
+        // get the textview that holds the high score
+        TextView highScoreView = findViewById(R.id.highScoreTextView);
+        // change the value to the current high score
+        highScoreView.setText(highPreference);
+    }
+
+    /**
+     * logScoreInformation - This logging within the updateScore method was getting
+     * pretty long so I moved it into its own function for brevity
+     */
+    private void logScoreInformation() {
         // Check to see what they got right, they can lose points for incorrect responses
         Log.i(TAG, "actualElement.electrons: " + actualElement.getElectrons());
         Log.i(TAG, "actualElement.protons: " + actualElement.getProtons());
@@ -299,26 +387,6 @@ public class MainActivity extends AppCompatActivity {
                 "-" + actualElement.getNeutrons() +
                 "-" + targetElement.getNeutrons() + "-:" +
                 (targetElement.getNeutrons() == actualElement.getNeutrons()));
-
-        // Electrons
-        if (targetElement.getElectrons() == actualElement.getElectrons()) {
-            points += 10;
-        }
-        // Protons
-        if (targetElement.getProtons() == actualElement.getProtons()) {
-            points += 10;
-        }
-        // Neutrons
-        if (targetElement.getNeutrons() == actualElement.getNeutrons()) {
-            points += 10;
-        }
-
-        Log.i(TAG, "Points after modification: " + points);
-
-        // Show the player their score
-        TextView pointBox = (TextView) findViewById(R.id.playerPointsTextView);
-        pointBox.setText(Integer.toString(points));
-        Log.i(TAG, "Comparison:TextView:Points: " + pointBox.getText());
     }
 
     /**
@@ -332,6 +400,7 @@ public class MainActivity extends AppCompatActivity {
         targetElement.setElectrons(tableOfElements.get(index).getElectrons());
         targetElement.setNeutrons(tableOfElements.get(index).getNeutrons());
         targetElement.setProtons(tableOfElements.get(index).getProtons());
+
         Log.i(TAG, "randomElement name: " + targetElement.getName());
         Log.i(TAG, "randomElement prot: " + targetElement.getProtons());
         Log.i(TAG, "randomElement neut: " + targetElement.getNeutrons());
