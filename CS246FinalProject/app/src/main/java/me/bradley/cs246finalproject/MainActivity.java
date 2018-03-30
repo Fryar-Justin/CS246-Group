@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private String highScoreInt;
     private String target;
     private int points = 0;
+    private int currentImage = 0;
 
     /**
      * onCreate - This is the method run as the intent is created. It will load everything that we need to have
@@ -122,7 +124,13 @@ public class MainActivity extends AppCompatActivity {
         // Log the target element
         Log.i(TAG, "onCreate: targetElement: " + targetElement.getName());
 
+        // show targetElement's name
         targetElementTextView.setText(targetElement.getName());
+
+        // show image of targetElement's atomic information
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setImageResource(images[currentImage]);
+        displayImage(imageView);
     }
 
     /**
@@ -233,7 +241,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume: Name: " + targetElement.getName());
         Log.i(TAG, "onResume: points: " + this.points);
 
+        // update targetElement name displayed to user
         targetElementTextView.setText(targetElement.getName());
+        // show image of targetElement's atomic information
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setImageResource(images[currentImage]);
+        displayImage(imageView);
     }
 
     /**
@@ -377,5 +390,52 @@ public class MainActivity extends AppCompatActivity {
         tableOfElements.add(new Element(40, 51, 40, "Zirconium"));
 
         return;
+    }
+
+    // atomic symbol files
+    private Integer images[] = {R.drawable.hydrogen,
+            R.drawable.helium,
+            R.drawable.lithium,
+            R.drawable.beryllium,
+            R.drawable.boron,
+            R.drawable.carbon,
+            R.drawable.nitrogen,
+            R.drawable.oxygen,
+            R.drawable.fluorine,
+            R.drawable.neon,
+            R.drawable.sodium,
+            R.drawable.magnesium,
+            R.drawable.aluminum,
+            R.drawable.silicon,
+            R.drawable.phosphorus,
+            R.drawable.sulfur,
+            R.drawable.chlorine,
+            R.drawable.argon,
+            R.drawable.potassium,
+            R.drawable.calcium,
+            R.drawable.scandium,
+            R.drawable.titanium,
+            R.drawable.vanadium,
+            R.drawable.chromium,
+            R.drawable.manganese,
+            R.drawable.iron,
+            R.drawable.cobalt,
+            R.drawable.nickel,
+            R.drawable.copper,
+            R.drawable.zinc,
+            R.drawable.gallium,
+            R.drawable.germanium,
+            R.drawable.arsenic,
+            R.drawable.selenium,
+            R.drawable.bromine,
+            R.drawable.krypton,
+            R.drawable.rubidium,
+            R.drawable.strontium,
+            R.drawable.yttrium,
+            R.drawable.zirconium
+    };
+
+    public void displayImage(ImageView view){
+        view.setImageResource(images[targetElement.getProtons() - 1]);
     }
 }
