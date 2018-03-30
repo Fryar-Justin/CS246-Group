@@ -1,6 +1,7 @@
 package me.bradley.cs246finalproject;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -172,24 +173,48 @@ public class ElementActivity extends AppCompatActivity {
         if(confirm == 3) {
             Toast.makeText(this.getApplicationContext(), "You are correct!",
                     Toast.LENGTH_SHORT).show();
+            playSound(3);
         }
         else if(confirm == 2) {
             Toast.makeText(this.getApplicationContext(), "You're close! One value is off, though...",
                     Toast.LENGTH_SHORT).show();
+            playSound(2);
         }
         else if(confirm == 1) {
             Toast.makeText(this.getApplicationContext(), "Keep trying! One value is correct.",
                     Toast.LENGTH_SHORT).show();
+            playSound(1);
         }
         else if(confirm == 0) {
             Toast.makeText(this.getApplicationContext(), "You'll never make it as a chemist, kid...",
                     Toast.LENGTH_SHORT).show();
+            playSound(0);
         }
         Log.i(TAG, "confirm: " + confirm);
     }
 
     public void displayImage(ImageView view){
         view.setImageResource(images[elementTarget.getProtons() - 1]);
+    }
+
+    public void playSound(int count){
+        if(count == 0){
+            MediaPlayer tone = MediaPlayer.create(ElementActivity.this, R.raw.tone0);
+            tone.start();
+        }
+        else if(count == 1){
+            MediaPlayer tone = MediaPlayer.create(ElementActivity.this, R.raw.tone1);
+            tone.start();
+        }
+        else if(count == 2){
+            MediaPlayer tone = MediaPlayer.create(ElementActivity.this, R.raw.tone2);
+            tone.start();
+        }
+        else if(count == 3){
+            MediaPlayer tone = MediaPlayer.create(ElementActivity.this, R.raw.tone3);
+            tone.start();
+        }
+
     }
 
     public void displayMessage(){
