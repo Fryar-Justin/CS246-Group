@@ -166,8 +166,8 @@ public class ElementActivity extends AppCompatActivity {
      */
     public String buildFeedback(boolean eleChecks[]) {
         String msg = "Almost! You need to fix your:\n";
-           // ele                  pro                     neu
-        if(eleChecks[0] == true && eleChecks[1] == true && eleChecks[2] == true) {
+           // ele          pro             neu
+        if(eleChecks[0] && eleChecks[1] && eleChecks[2]) {
             msg = "Great job!!!";
             return msg;
         }
