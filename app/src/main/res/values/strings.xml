@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Chemistry Memory</string>
+    <string name="Electron">Electron</string>
+    <string name="Neutron">Neutron</string>
+    <string name="Proton">Proton</string>
+    <string name="Submit">Submit</string>
+    <string name="Play">Play</string>
+    <string name="Help">Help</string>
+    <string name="Symbol">O</string>
+    <string name="GameName">Atom Builder</string>
+    <string name="HowToPlay">How To Play</string>
+    <string name="Return">X</string>
+    <string name="PlayDescription">
+        <![CDATA[
+            <b>Directions:</b>
+            <p>This application is designed to provide students with a way of testing their knowledge
+            of elements on the periodic table. Within the program a student will be prompted with
+            a random element. They will then be required to enter the number of Proton\'s, Electron\'s, and
+            neutrons that are in the element.</p>
+
+            <p>Getting the answer right will reward the student with points that will be permanently
+            recorded for later reference. If the student beats their all time record it will be
+            updated with the new high score.</p>
+
+            <p>The goal is to get the best score possible. Good Luck!</p>
+        ]]>
+    </string>
+    <string name="HighScore">High Score:</string>
+    <string name="YourScore">Your Score:</string>
+</resources>
