@@ -1,7 +1,10 @@
 package me.bradley.cs246finalproject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -132,13 +135,13 @@ public class ElementActivity extends AppCompatActivity {
         actualNeutrons.setText(_neutrons);
 
         TextView desiredProtons = (TextView) findViewById(R.id.textView14);
-        desiredProtons.setText(target_prot);
+        desiredProtons.setText("?");
 
         TextView desiredElectrons = (TextView) findViewById(R.id.textView15);
-        desiredElectrons.setText(target_elec);
+        desiredElectrons.setText("?");
 
         TextView desiredNeutrons = (TextView) findViewById(R.id.textView16);
-        desiredNeutrons.setText(target_neut);
+        desiredNeutrons.setText("?");
 
 
         // create element here from values passed with intent
@@ -148,7 +151,7 @@ public class ElementActivity extends AppCompatActivity {
         elementActual = new Element(protons, neutrons, electrons);
 
         // call validate with element
-        validate();
+        validate(desiredElectrons, desiredNeutrons, desiredProtons);
 
         // display image of element
         ImageView imageView = (ImageView) findViewById(R.id.imageView1);
@@ -157,19 +160,56 @@ public class ElementActivity extends AppCompatActivity {
     }
 
     /**
+     * builds the feedback string as part of the validate process.
+     * @param eleChecks
+     * @return
+     */
+    public String buildFeedback(boolean eleChecks[]) {
+        String msg = "Almost! You need to fix your:\n";
+           // ele                  pro                     neu
+        if(eleChecks[0] == true && eleChecks[1] == true && eleChecks[2] == true) {
+            msg = "Great job!!!";
+            return msg;
+        }
+        if(!eleChecks[0])
+            msg += "\tElectrons\n";
+        if(!eleChecks[1])
+            msg += "\tProtons\n";
+        if(!eleChecks[2])
+            msg += "\tNeutrons\n";
+
+        return msg; // returns the string
+
+    }
+
+    /**
      * validate - Checks to see if created element matches the target element and displays quick feedback.
      */
-    public void validate(){
+    public void validate(TextView ele, TextView neu, TextView pro){
         int confirm = 0;
+        boolean eleChecks[] = new boolean[3];
 
-        // Test the three values and increment the points value for each correct element
-        if(elementActual.getElectrons() == elementTarget.getElectrons())
+        // Test the three values and increment confirm, display text and adjust feedback string
+        if(elementActual.getElectrons() == elementTarget.getElectrons()) {
+            confirm ++;
+            ele.setText(_electrons);
+            eleChecks[0] = true;
+        }
+        if(elementActual.getProtons() == elementTarget.getProtons()) {
             confirm++;
-        if(elementActual.getProtons() == elementTarget.getProtons())
+            pro.setText(_protons);
+            eleChecks[1] = true;
+        }
+        if(elementActual.getNeutrons() == elementTarget.getNeutrons()) {
             confirm++;
-        if(elementActual.getNeutrons() == elementTarget.getNeutrons())
-            confirm++;
+            neu.setText(_neutrons);
+            eleChecks[2] = true;
+        }
 
+        // build feedback string
+        String msg = buildFeedback(eleChecks);
+
+        // taunt kids and play noise
         if(confirm == 3) {
             Toast.makeText(this.getApplicationContext(), "You are correct!",
                     Toast.LENGTH_SHORT).show();
@@ -190,13 +230,35 @@ public class ElementActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             playSound(0);
         }
+
         Log.i(TAG, "confirm: " + confirm);
+
+        // display info to user in alertDialog
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+        builder.setTitle("Let's review:").setMessage(msg)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // closes the dialog box
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
+    /**
+     * displayImage displays the correct image based on selected element
+     * @param view
+     */
     public void displayImage(ImageView view){
         view.setImageResource(images[elementTarget.getProtons() - 1]);
     }
 
+    /**
+     * playSound takes the count of correct answers from the user's submission and plays the associated sound
+     * @param count
+     */
     public void playSound(int count){
         if(count == 0){
             MediaPlayer tone = MediaPlayer.create(ElementActivity.this, R.raw.tone0);
@@ -214,10 +276,6 @@ public class ElementActivity extends AppCompatActivity {
             MediaPlayer tone = MediaPlayer.create(ElementActivity.this, R.raw.tone3);
             tone.start();
         }
-
-    }
-
-    public void displayMessage(){
 
     }
     
