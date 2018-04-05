@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/highScoreTextView" />
 
     <NumberPicker
-        android:id="@+id/electronNumberPicker"
+        android:id="@+id/scroll_Difficulty"
         android:layout_width="85dp"
         android:layout_height="106dp"
         android:layout_marginBottom="8dp"
@@ -31,7 +31,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <NumberPicker
-        android:id="@+id/neutronNumberPicker"
+        android:id="@+id/scroll_Attempts"
         android:layout_width="85dp"
         android:layout_height="106dp"
         android:layout_marginBottom="8dp"
@@ -42,7 +42,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <NumberPicker
-        android:id="@+id/protonNumberPicker"
+        android:id="@+id/scroll_MaxTime"
         android:layout_width="85dp"
         android:layout_height="106dp"
         android:layout_marginBottom="8dp"
@@ -58,7 +58,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/Neutron"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/neutronNumberPicker"
+        app:layout_constraintBottom_toTopOf="@+id/scroll_Attempts"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -70,7 +70,7 @@
         android:layout_marginLeft="16dp"
         android:text="@string/Electron"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/electronNumberPicker"
+        app:layout_constraintBottom_toTopOf="@+id/scroll_Difficulty"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
@@ -81,7 +81,7 @@
         android:layout_marginRight="16dp"
         android:text="@string/Proton"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/protonNumberPicker"
+        app:layout_constraintBottom_toTopOf="@+id/scroll_MaxTime"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button

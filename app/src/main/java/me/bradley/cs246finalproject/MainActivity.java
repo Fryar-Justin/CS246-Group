@@ -113,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
         updateHighScoreToTextView();
 
         // Set the values that the number pickers will have for their max/min
-        numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
-        numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
-        numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
+        numberPickerP = (NumberPicker) findViewById(R.id.scroll_MaxTime);
+        numberPickerN = (NumberPicker) findViewById(R.id.scroll_Attempts);
+        numberPickerE = (NumberPicker) findViewById(R.id.scroll_Difficulty);
 
         // Set proton number picker values
         numberPickerP.setMinValue(0);
@@ -169,9 +169,9 @@ public class MainActivity extends AppCompatActivity {
         String neutron = "0";
 
         // Find our number picker values.
-        numberPickerP = (NumberPicker) findViewById(R.id.protonNumberPicker);
-        numberPickerN = (NumberPicker) findViewById(R.id.neutronNumberPicker);
-        numberPickerE = (NumberPicker) findViewById(R.id.electronNumberPicker);
+        numberPickerP = (NumberPicker) findViewById(R.id.scroll_MaxTime);
+        numberPickerN = (NumberPicker) findViewById(R.id.scroll_Attempts);
+        numberPickerE = (NumberPicker) findViewById(R.id.scroll_Difficulty);
 
         // Get the values from the number pickers
         electron = Integer.toString(numberPickerE.getValue());
@@ -228,9 +228,9 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume called");
         super.onResume();
 
-        numberPickerE = findViewById(R.id.electronNumberPicker);
-        numberPickerN = findViewById(R.id.neutronNumberPicker);
-        numberPickerP = findViewById(R.id.protonNumberPicker);
+        numberPickerE = findViewById(R.id.scroll_Difficulty);
+        numberPickerN = findViewById(R.id.scroll_Attempts);
+        numberPickerP = findViewById(R.id.scroll_MaxTime);
 
         actualElement = new Element(numberPickerP.getValue(),
                 numberPickerN.getValue(),
