@@ -216,9 +216,4 @@ public class ElementActivity extends AppCompatActivity {
         }
 
     }
-
-    public void displayMessage(){
-
-    }
-    
 }
