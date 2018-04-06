@@ -1,15 +1,10 @@
 package me.bradley.cs246finalproject;
 
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spanned;
-import android.text.method.ScrollingMovementMethod;
-import android.util.DisplayMetrics;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.NumberPicker;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -40,6 +35,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         maxTime.setMaxValue(90);
         maxTime.setMinValue(5);
+        maxTime.setValue(30);
 
         String[] values = { "Easy", "Expert", "Hard", "Medium" };
         difficulty.setMaxValue(values.length);

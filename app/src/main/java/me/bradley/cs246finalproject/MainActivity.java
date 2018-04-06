@@ -440,9 +440,29 @@ public class MainActivity extends AppCompatActivity {
      * randomElement - Gets a random element from the array
      */
     public void randomElement(){
+        sharedPreferences = getSharedPreferences("DIFFICULTY", MODE_PRIVATE);
+        String limit = sharedPreferences.getString("DIFFICULTY", "2");
+        Integer intLimit;
+        switch (limit) {
+            case "Easy":
+                intLimit = 10;
+                break;
+            case "Medium":
+                intLimit = 20;
+                break;
+            case "Hard":
+                intLimit = 30;
+                break;
+            case "Expert":
+                intLimit = 40;
+                break;
+                default:
+                    intLimit = 20;
+        }
+
         Log.i(TAG, "randomElement called");
         randomGenerator = new Random();
-        int index = randomGenerator.nextInt(tableOfElements.size());
+        int index = randomGenerator.nextInt(intLimit);
         targetElement.setName(tableOfElements.get(index).getName());
         targetElement.setElectrons(tableOfElements.get(index).getElectrons());
         targetElement.setNeutrons(tableOfElements.get(index).getNeutrons());
