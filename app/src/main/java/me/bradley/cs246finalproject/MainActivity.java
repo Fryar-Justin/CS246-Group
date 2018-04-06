@@ -72,6 +72,28 @@ public class MainActivity extends AppCompatActivity {
     private boolean protonPointsAwarded = false;
     private int currentImage = 0;
 
+    private void startTimer() {
+        sharedPreferences = getSharedPreferences("MAX_TIME", MODE_PRIVATE);
+        String stringTime = sharedPreferences.getString("MAX_TIME", "30");
+        long time = Long.parseLong(stringTime);
+        time = time * 1000;
+
+        timer = new CountDownTimer(time, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timerTextView = findViewById(R.id.timerTextView);
+                timerTextView.setText(Long.toString(millisUntilFinished / 1000));
+            }
+
+            @Override
+            public void onFinish() {
+                timerTextView = findViewById(R.id.timerTextView);
+                timerTextView.setText("0");
+            }
+        }.start();
+
+    }
+
     /**
      * onCreate - This is the method run as the intent is created. It will load everything that we need to have
      * loaded so that the user can interact with the application. This specific onCreate function
@@ -83,19 +105,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Create a timer and display on the screen
-        timer = new CountDownTimer(30000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                timerTextView = findViewById(R.id.timerTextView);
-                timerTextView.setText(Long.toString(millisUntilFinished/1000));
+        /*
+        timer = new CountDownTimer(0, 0) {
+            @Override
+            public void onTick(long l) {
+                l = 0;
             }
 
+            @Override
             public void onFinish() {
-                timerTextView = findViewById(R.id.timerTextView);
-                timerTextView.setText(Long.toString(0));
+                ;
             }
-        }.start();
+        };
+        */
+        startTimer();
 
         // populate the array of elements
         createArray();
@@ -278,18 +301,8 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImageResource(images[currentImage]);
         displayImage(imageView);
 
-        // Create a timer and display on the screen
-        timer = new CountDownTimer(30000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                timerTextView = findViewById(R.id.timerTextView);
-                timerTextView.setText(Long.toString(millisUntilFinished/1000));
-            }
-
-            public void onFinish() {
-                timerTextView = findViewById(R.id.timerTextView);
-                timerTextView.setText(Long.toString(0));
-            }
-        }.start();
+        timer.cancel();
+        startTimer();
     }
 
     /**
