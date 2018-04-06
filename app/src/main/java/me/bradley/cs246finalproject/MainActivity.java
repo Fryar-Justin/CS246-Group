@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean protonPointsAwarded = false;
     private int currentImage = 0;
 
+    private Integer attemptsCount;
+
     private void startTimer() {
         sharedPreferences = getSharedPreferences("MAX_TIME", MODE_PRIVATE);
         String stringTime = sharedPreferences.getString("MAX_TIME", "30");
@@ -105,19 +107,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*
-        timer = new CountDownTimer(0, 0) {
-            @Override
-            public void onTick(long l) {
-                l = 0;
-            }
 
-            @Override
-            public void onFinish() {
-                ;
-            }
-        };
-        */
         startTimer();
 
         // populate the array of elements
@@ -174,6 +164,15 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageResource(images[currentImage]);
         displayImage(imageView);
+
+        // set up Attempts
+        sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
+        String stringAttempts = sharedPreferences.getString("ATTEMPTS", "3");
+        String tempText = "1/" + stringAttempts;
+        TextView textView = findViewById(R.id.attemptsTextView);
+        textView.setText(tempText);
+
+        setAttemptsCount(1);
     }
 
     /**
@@ -246,10 +245,25 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onResume(){
-        TextView targetElementTextView = (TextView) findViewById(R.id.targetElementTextView);
-
         Log.i(TAG, "onResume called");
         super.onResume();
+
+        sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
+        String stringAttempts = sharedPreferences.getString("ATTEMPTS", "3");
+        Integer attempts = Integer.valueOf(stringAttempts);
+
+        if (getAttemptsCount() == (attempts)) {
+            randomElement();
+            setAttemptsCount(1);
+        }
+        else {
+            setAttemptsCount(attemptsCount + 1);
+        }
+
+        TextView textView = findViewById(R.id.attemptsTextView);
+        textView.setText(attemptsCount + "/" + stringAttempts);
+
+        TextView targetElementTextView = (TextView) findViewById(R.id.targetElementTextView);
 
         numberPickerE = findViewById(R.id.scroll_Difficulty);
         numberPickerN = findViewById(R.id.scroll_Attempts);
@@ -281,6 +295,8 @@ public class MainActivity extends AppCompatActivity {
             electronPointsAwarded = false;
             neutronPointsAwarded = false;
             protonPointsAwarded = false;
+
+            attemptsCount = 0;
         }
 
         Log.i(TAG, "onResume: New Element Made");
@@ -329,42 +345,52 @@ public class MainActivity extends AppCompatActivity {
      * orbits we should split up the weighting of points evenly.
      */
     public void updateScore() {
-        // log the point information
-        logScoreInformation();
+        TextView textView = findViewById(R.id.timerTextView);
+        CharSequence time = textView.getText();
 
-        // the following doesn't allow you to gain duplicate points from the same element
-        // Electrons
-        if (targetElement.getElectrons() == actualElement.getElectrons()) {
-            if (!electronPointsAwarded) {
-                points += 10;
-                electronPointsAwarded = true;
+        if (time != "0") {
+
+
+            // log the point information
+            logScoreInformation();
+
+            // the following doesn't allow you to gain duplicate points from the same element
+            // Electrons
+            if (targetElement.getElectrons() == actualElement.getElectrons()) {
+                if (!electronPointsAwarded) {
+                    points += 10;
+                    electronPointsAwarded = true;
+                }
             }
-        }
-        // Protons
-        if (targetElement.getProtons() == actualElement.getProtons()) {
-            if (!protonPointsAwarded) {
-                points += 10;
-                protonPointsAwarded = true;
+            // Protons
+            if (targetElement.getProtons() == actualElement.getProtons()) {
+                if (!protonPointsAwarded) {
+                    points += 10;
+                    protonPointsAwarded = true;
+                }
             }
-        }
-        // Neutrons
-        if (targetElement.getNeutrons() == actualElement.getNeutrons()) {
-            if (!neutronPointsAwarded) {
-                points += 10;
-                protonPointsAwarded = true;
+            // Neutrons
+            if (targetElement.getNeutrons() == actualElement.getNeutrons()) {
+                if (!neutronPointsAwarded) {
+                    points += 10;
+                    protonPointsAwarded = true;
+                }
             }
+
+            Log.i(TAG, "Points after modification: " + points);
+
+            // Show the player their score
+            TextView pointBox = (TextView) findViewById(R.id.playerPointsTextView);
+            pointBox.setText(Integer.toString(points));
+            Log.i(TAG, "Comparison:TextView:Points: " + pointBox.getText());
+
+            // save and display high score
+            saveAndDisplayHighScore();
         }
-
-        Log.i(TAG, "Points after modification: " + points);
-
-        // Show the player their score
-        TextView pointBox = (TextView) findViewById(R.id.playerPointsTextView);
-        pointBox.setText(Integer.toString(points));
-        Log.i(TAG, "Comparison:TextView:Points: " + pointBox.getText());
-
-        // save and display high score
-        saveAndDisplayHighScore();
-
+        else {
+            randomElement();
+            startTimer();
+        }
     }
 
     /**
@@ -573,5 +599,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayImage(ImageView view){
         view.setImageResource(images[targetElement.getProtons() - 1]);
+    }
+
+    private Integer getAttemptsCount() {
+        return attemptsCount;
+    }
+
+    private void setAttemptsCount(Integer temp) {
+        attemptsCount = temp;
     }
 }

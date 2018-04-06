@@ -33,4 +33,6 @@
     <string name="HighScore">High Score:</string>
     <string name="YourScore">Your Score:</string>
     <string name="Settings">Settings</string>
+    <string name="Timer">Timer</string>
+    <string name="Attempts">Attempts</string>
 </resources>
