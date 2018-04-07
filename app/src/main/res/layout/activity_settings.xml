@@ -41,16 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41000003" />
-
-    <NumberPicker
-        android:id="@+id/scroll_Attempts"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="24dp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@+id/scroll_Difficulty"
-        app:layout_constraintTop_toBottomOf="@+id/scroll_Difficulty" />
+        app:layout_constraintVertical_bias="0.562" />
 
     <TextView
         android:id="@+id/textView19"
@@ -89,21 +80,9 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="@+id/scroll_Difficulty"
         app:layout_constraintEnd_toStartOf="@+id/scroll_Difficulty"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/scroll_Difficulty" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Attempts"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@+id/scroll_Attempts"
-        app:layout_constraintStart_toStartOf="@+id/textView22"
-        app:layout_constraintTop_toTopOf="@+id/scroll_Attempts" />
 
     <TextView
         android:id="@+id/textView24"
@@ -124,25 +103,17 @@
         app:layout_constraintStart_toStartOf="@+id/textView22"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="On Element"
-        app:layout_constraintStart_toStartOf="@+id/textView25"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
     <Button
         android:id="@+id/button4"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginBottom="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:onClick="saveSettings"
         android:text="SAVE"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/scroll_Attempts"
-        app:layout_constraintStart_toStartOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/scroll_Attempts" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
