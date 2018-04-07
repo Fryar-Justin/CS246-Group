@@ -20,7 +20,8 @@
 
             <p>Getting the answer right will reward the student with points that will be permanently
             recorded for later reference. If the student beats their all time record it will be
-            updated with the new high score.</p>
+            updated with the new high score. However, if you take too long and the timer runs out
+            you will lose points.</p>
 
             <p>The goal is to get the best score possible. Good Luck!</p>
         ]]>
