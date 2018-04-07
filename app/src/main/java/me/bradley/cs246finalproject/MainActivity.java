@@ -388,9 +388,6 @@ public class MainActivity extends AppCompatActivity {
             saveAndDisplayHighScore();
         }
         else {
-            points -= 5;
-            TextView pointBox = (TextView) findViewById(R.id.playerPointsTextView);
-            pointBox.setText(Integer.toString(points));
             randomElement();
             startTimer();
         }

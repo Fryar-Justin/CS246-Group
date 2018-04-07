@@ -10,12 +10,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="739a05e8-3933-4442-ad9e-92407dd23a87" name="Default" comment="Fixing">
+    <list default="true" id="739a05e8-3933-4442-ad9e-92407dd23a87" name="Default" comment="pushing up something that hopefully works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/bradley/cs246finalproject/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/me/bradley/cs246finalproject/MainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/bradley/cs246finalproject/Pop.java" afterPath="$PROJECT_DIR$/app/src/main/java/me/bradley/cs246finalproject/Pop.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/bradley/cs246finalproject/SettingsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/me/bradley/cs246finalproject/SettingsActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -71,13 +68,13 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/me/bradley/cs246finalproject/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4757">
-              <caret line="376" column="17" lean-forward="false" selection-start-line="376" selection-start-column="17" selection-end-line="376" selection-end-column="17" />
+            <state relative-caret-position="191">
+              <caret line="317" column="8" lean-forward="true" selection-start-line="317" selection-start-column="8" selection-end-line="317" selection-end-column="8" />
               <folding>
-                <element signature="e#23251#23252#0" expanded="true" />
-                <element signature="e#23292#23293#0" expanded="true" />
-                <element signature="e#23343#23344#0" expanded="true" />
-                <element signature="e#23384#23385#0" expanded="true" />
+                <element signature="e#23349#23350#0" expanded="true" />
+                <element signature="e#23390#23391#0" expanded="true" />
+                <element signature="e#23441#23442#0" expanded="true" />
+                <element signature="e#23482#23483#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2586,7 +2583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523054567254</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="pushing up something that hopefully works">
+      <created>1523063322167</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1523063322167</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2609,7 +2613,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2635,11 +2639,12 @@
     <MESSAGE value="Fixed timer, and changed it so that it reads from settings the amount of time to use" />
     <MESSAGE value="Have both the timer and difficulty settings working, now to do the number of attempts" />
     <MESSAGE value="Everything works except for the attempts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Everything works except for the attempts" />
+    <MESSAGE value="pushing up something that hopefully works" />
+    <option name="LAST_COMMIT_MESSAGE" value="pushing up something that hopefully works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2689,10 +2694,10 @@
         <state relative-caret-position="6556">
           <caret line="298" column="12" lean-forward="false" selection-start-line="298" selection-start-column="12" selection-end-line="298" selection-end-column="12" />
           <folding>
-            <element signature="e#23251#23252#0" expanded="true" />
-            <element signature="e#23292#23293#0" expanded="true" />
-            <element signature="e#23343#23344#0" expanded="true" />
-            <element signature="e#23384#23385#0" expanded="true" />
+            <element signature="e#23349#23350#0" expanded="true" />
+            <element signature="e#23390#23391#0" expanded="true" />
+            <element signature="e#23441#23442#0" expanded="true" />
+            <element signature="e#23482#23483#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2721,10 +2726,10 @@
         <state relative-caret-position="2398">
           <caret line="109" column="10" lean-forward="false" selection-start-line="109" selection-start-column="10" selection-end-line="109" selection-end-column="10" />
           <folding>
-            <element signature="e#23251#23252#0" expanded="true" />
-            <element signature="e#23292#23293#0" expanded="true" />
-            <element signature="e#23343#23344#0" expanded="true" />
-            <element signature="e#23384#23385#0" expanded="true" />
+            <element signature="e#23349#23350#0" expanded="true" />
+            <element signature="e#23390#23391#0" expanded="true" />
+            <element signature="e#23441#23442#0" expanded="true" />
+            <element signature="e#23482#23483#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2745,10 +2750,10 @@
         <state relative-caret-position="660">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="e#23251#23252#0" expanded="true" />
-            <element signature="e#23292#23293#0" expanded="true" />
-            <element signature="e#23343#23344#0" expanded="true" />
-            <element signature="e#23384#23385#0" expanded="true" />
+            <element signature="e#23349#23350#0" expanded="true" />
+            <element signature="e#23390#23391#0" expanded="true" />
+            <element signature="e#23441#23442#0" expanded="true" />
+            <element signature="e#23482#23483#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2776,10 +2781,10 @@
         <state relative-caret-position="660">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="e#23251#23252#0" expanded="true" />
-            <element signature="e#23292#23293#0" expanded="true" />
-            <element signature="e#23343#23344#0" expanded="true" />
-            <element signature="e#23384#23385#0" expanded="true" />
+            <element signature="e#23349#23350#0" expanded="true" />
+            <element signature="e#23390#23391#0" expanded="true" />
+            <element signature="e#23441#23442#0" expanded="true" />
+            <element signature="e#23482#23483#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2800,10 +2805,10 @@
         <state relative-caret-position="6182">
           <caret line="281" column="16" lean-forward="false" selection-start-line="281" selection-start-column="16" selection-end-line="281" selection-end-column="16" />
           <folding>
-            <element signature="e#23251#23252#0" expanded="true" />
-            <element signature="e#23292#23293#0" expanded="true" />
-            <element signature="e#23343#23344#0" expanded="true" />
-            <element signature="e#23384#23385#0" expanded="true" />
+            <element signature="e#23349#23350#0" expanded="true" />
+            <element signature="e#23390#23391#0" expanded="true" />
+            <element signature="e#23441#23442#0" expanded="true" />
+            <element signature="e#23482#23483#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2824,10 +2829,10 @@
         <state relative-caret-position="1848">
           <caret line="84" column="31" lean-forward="false" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
           <folding>
-            <element signature="e#23251#23252#0" expanded="true" />
-            <element signature="e#23292#23293#0" expanded="true" />
-            <element signature="e#23343#23344#0" expanded="true" />
-            <element signature="e#23384#23385#0" expanded="true" />
+            <element signature="e#23349#23350#0" expanded="true" />
+            <element signature="e#23390#23391#0" expanded="true" />
+            <element signature="e#23441#23442#0" expanded="true" />
+            <element signature="e#23482#23483#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2859,10 +2864,10 @@
         <state relative-caret-position="22">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="e#23251#23252#0" expanded="true" />
-            <element signature="e#23292#23293#0" expanded="true" />
-            <element signature="e#23343#23344#0" expanded="true" />
-            <element signature="e#23384#23385#0" expanded="true" />
+            <element signature="e#23349#23350#0" expanded="true" />
+            <element signature="e#23390#23391#0" expanded="true" />
+            <element signature="e#23441#23442#0" expanded="true" />
+            <element signature="e#23482#23483#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2992,13 +2997,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/me/bradley/cs246finalproject/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4757">
-          <caret line="376" column="17" lean-forward="false" selection-start-line="376" selection-start-column="17" selection-end-line="376" selection-end-column="17" />
+        <state relative-caret-position="191">
+          <caret line="317" column="8" lean-forward="true" selection-start-line="317" selection-start-column="8" selection-end-line="317" selection-end-column="8" />
           <folding>
-            <element signature="e#23251#23252#0" expanded="true" />
-            <element signature="e#23292#23293#0" expanded="true" />
-            <element signature="e#23343#23344#0" expanded="true" />
-            <element signature="e#23384#23385#0" expanded="true" />
+            <element signature="e#23349#23350#0" expanded="true" />
+            <element signature="e#23390#23391#0" expanded="true" />
+            <element signature="e#23441#23442#0" expanded="true" />
+            <element signature="e#23482#23483#0" expanded="true" />
           </folding>
         </state>
       </provider>
