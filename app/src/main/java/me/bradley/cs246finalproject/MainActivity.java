@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean protonPointsAwarded = false;
     private int currentImage = 0;
 
-    private Integer attemptsCount;
 
     private void startTimer() {
         sharedPreferences = getSharedPreferences("MAX_TIME", MODE_PRIVATE);
@@ -165,14 +164,6 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImageResource(images[currentImage]);
         displayImage(imageView);
 
-        // set up Attempts
-        /*sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
-        String stringAttempts = sharedPreferences.getString("ATTEMPTS", "3");
-        String tempText = "1/" + stringAttempts;
-        TextView textView = findViewById(R.id.attemptsTextView);
-        textView.setText(tempText);
-
-        setAttemptsCount(1);*/
     }
 
     /**
@@ -248,21 +239,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume called");
         super.onResume();
 
-        /*sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
-        String stringAttempts = sharedPreferences.getString("ATTEMPTS", "3");
-        Integer attempts = Integer.valueOf(stringAttempts);
-
-        if (getAttemptsCount() == (attempts)) {
-            randomElement();
-            setAttemptsCount(1);
-        }
-        else {
-            setAttemptsCount(attemptsCount + 1);
-        }
-
-        TextView textView = findViewById(R.id.attemptsTextView);
-        textView.setText(attemptsCount + "/" + stringAttempts);*/
-
         TextView targetElementTextView = (TextView) findViewById(R.id.targetElementTextView);
 
         numberPickerE = findViewById(R.id.scroll_Difficulty);
@@ -295,8 +271,7 @@ public class MainActivity extends AppCompatActivity {
             electronPointsAwarded = false;
             neutronPointsAwarded = false;
             protonPointsAwarded = false;
-
-            attemptsCount = 0;
+            
         }
 
         Log.i(TAG, "onResume: New Element Made");
@@ -601,11 +576,4 @@ public class MainActivity extends AppCompatActivity {
         view.setImageResource(images[targetElement.getProtons() - 1]);
     }
 
-    private Integer getAttemptsCount() {
-        return this.attemptsCount;
-    }
-
-    private void setAttemptsCount(Integer temp) {
-        this.attemptsCount = temp;
-    }
 }
