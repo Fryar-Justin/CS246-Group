@@ -373,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
             if (targetElement.getNeutrons() == actualElement.getNeutrons()) {
                 if (!neutronPointsAwarded) {
                     points += 10;
-                    protonPointsAwarded = true;
+                    neutronPointsAwarded = true;
                 }
             }
 
