@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -172,6 +173,8 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.attemptsTextView);
         textView.setText(tempText);
 
+        Toast.makeText(this, tempText, Toast.LENGTH_SHORT).show();
+
         setAttemptsCount(1);
     }
 
@@ -248,21 +251,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume called");
         super.onResume();
 
-        sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
-        String stringAttempts = sharedPreferences.getString("ATTEMPTS", "3");
-        Integer attempts = Integer.valueOf(stringAttempts);
-
-        if (getAttemptsCount() == (attempts)) {
-            randomElement();
-            setAttemptsCount(1);
-        }
-        else {
-            setAttemptsCount(attemptsCount + 1);
-        }
-
-        TextView textView = findViewById(R.id.attemptsTextView);
-        textView.setText(attemptsCount + "/" + stringAttempts);
-
         TextView targetElementTextView = (TextView) findViewById(R.id.targetElementTextView);
 
         numberPickerE = findViewById(R.id.scroll_Difficulty);
@@ -319,6 +307,22 @@ public class MainActivity extends AppCompatActivity {
 
         timer.cancel();
         startTimer();
+
+
+        sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
+        String stringAttempts = sharedPreferences.getString("ATTEMPTS", "3");
+        Integer attempts = Integer.valueOf(stringAttempts);
+
+        if (getAttemptsCount() == (attempts)) {
+            randomElement();
+            setAttemptsCount(1);
+        }
+        else {
+            setAttemptsCount(attemptsCount + 1);
+        }
+
+        TextView textView = findViewById(R.id.attemptsTextView);
+        textView.setText(attemptsCount + "/" + stringAttempts);
     }
 
     /**
