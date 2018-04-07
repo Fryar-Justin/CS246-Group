@@ -166,13 +166,13 @@ public class MainActivity extends AppCompatActivity {
         displayImage(imageView);
 
         // set up Attempts
-        sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
+        /*sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
         String stringAttempts = sharedPreferences.getString("ATTEMPTS", "3");
         String tempText = "1/" + stringAttempts;
         TextView textView = findViewById(R.id.attemptsTextView);
         textView.setText(tempText);
 
-        setAttemptsCount(1);
+        setAttemptsCount(1);*/
     }
 
     /**
@@ -248,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onResume called");
         super.onResume();
 
-        sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
+        /*sharedPreferences = getSharedPreferences("ATTEMPTS", MODE_PRIVATE);
         String stringAttempts = sharedPreferences.getString("ATTEMPTS", "3");
         Integer attempts = Integer.valueOf(stringAttempts);
 
@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         TextView textView = findViewById(R.id.attemptsTextView);
-        textView.setText(attemptsCount + "/" + stringAttempts);
+        textView.setText(attemptsCount + "/" + stringAttempts);*/
 
         TextView targetElementTextView = (TextView) findViewById(R.id.targetElementTextView);
 
@@ -388,6 +388,9 @@ public class MainActivity extends AppCompatActivity {
             saveAndDisplayHighScore();
         }
         else {
+            points -= 5;
+            TextView pointBox = (TextView) findViewById(R.id.playerPointsTextView);
+            pointBox.setText(Integer.toString(points));
             randomElement();
             startTimer();
         }
