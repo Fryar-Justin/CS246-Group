@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <Button
+        android:id="@+id/returnBtn"
+        android:layout_width="59dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/my_btn"
+        android:onClick="onClick"
+        android:text="@string/Return"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <NumberPicker
         android:id="@+id/scroll_MaxTime"
         android:layout_width="110dp"

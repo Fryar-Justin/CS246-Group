@@ -359,21 +359,21 @@ public class MainActivity extends AppCompatActivity {
             if (targetElement.getElectrons() == actualElement.getElectrons()) {
                 if (!electronPointsAwarded) {
                     points += 10;
-                    electronPointsAwarded = true;
+                    this.electronPointsAwarded = true;
                 }
             }
             // Protons
             if (targetElement.getProtons() == actualElement.getProtons()) {
                 if (!protonPointsAwarded) {
                     points += 10;
-                    protonPointsAwarded = true;
+                    this.protonPointsAwarded = true;
                 }
             }
             // Neutrons
             if (targetElement.getNeutrons() == actualElement.getNeutrons()) {
                 if (!neutronPointsAwarded) {
                     points += 10;
-                    neutronPointsAwarded = true;
+                    this.neutronPointsAwarded = true;
                 }
             }
 
@@ -602,10 +602,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Integer getAttemptsCount() {
-        return attemptsCount;
+        return this.attemptsCount;
     }
 
     private void setAttemptsCount(Integer temp) {
-        attemptsCount = temp;
+        this.attemptsCount = temp;
     }
 }

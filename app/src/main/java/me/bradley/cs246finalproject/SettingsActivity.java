@@ -100,4 +100,8 @@ public class SettingsActivity extends AppCompatActivity {
         Toast.makeText(this, "Difficulty: " + difficulty, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "Attempts: " + attempts, Toast.LENGTH_SHORT).show();
     }
+
+    public void onClick(View view) {
+        finish();
+    }
 }

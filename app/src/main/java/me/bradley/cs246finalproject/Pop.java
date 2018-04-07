@@ -6,6 +6,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -34,4 +35,7 @@ public class Pop extends Activity {
         getWindow().setLayout((int) (width * .8), (int) (height * 0.8));
     }
 
+    public void onClick(View view) {
+        finish();
+    }
 }
