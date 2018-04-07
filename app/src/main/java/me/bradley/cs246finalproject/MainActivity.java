@@ -271,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
             electronPointsAwarded = false;
             neutronPointsAwarded = false;
             protonPointsAwarded = false;
-            
+
         }
 
         Log.i(TAG, "onResume: New Element Made");
